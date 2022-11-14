@@ -14,10 +14,10 @@ export const updateCommand = async () => {
 
   if (yarnPath) {
     logDim("Checking for updates with Yarn...");
-    await shell.run("yarn global add @upg/cli");
+    await shell.run("yarn global add @gptlabs/upg");
   } else {
     logDim("Checking for updates with NPM...");
-    await shell.run("npm i -g @upg/cli");
+    await shell.run("npm i -g @gptlabs/upg");
   }
 
   success("Updated successfully.");

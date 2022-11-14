@@ -1,7 +1,7 @@
 {
-  "name": "@upg/cli",
+  "name": "@gptlabs/upg",
   "description": "This software will burn your house down! Do not use!",
-  "version": "2.4.2",
+  "version": "0.0.1",
   "license": "MIT",
   "type": "module",
   "platform": "node",

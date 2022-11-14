@@ -27,13 +27,13 @@ execute the output file.
 Using Yarn:
 
 ```bash
-yarn global add @upg/cli
+yarn global add @gptlabs/upg
 ```
 
 Using NPM:
 
 ```bash
-npm i -g @upg/cli
+npm i -g @gptlabs/upg
 ```
 
 ## Usage

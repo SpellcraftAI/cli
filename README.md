@@ -1,9 +1,9 @@
 <div align="center">
   <h1>GPT Labs</h1>
-  <b><p>Packages</p></b>
+  <b><p>Tools</p></b>
 </div>
 
-This is a monorepo which contains all of our open source projects.
+This is a monorepo which contains all of our open source tools.
 
 ### 1. UPG
 
