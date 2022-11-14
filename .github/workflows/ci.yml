@@ -33,5 +33,5 @@ jobs:
     - name: Install and link
       run: yarn install --frozen-lockfile
 
-    - name: Test
-      run: yarn test
+    # - name: Test
+    #   run: yarn test
