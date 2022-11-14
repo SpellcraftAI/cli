@@ -1,7 +1,7 @@
 {
   "name": "@gptlabs/upg",
-  "description": "This software will burn your house down! Do not use!",
-  "version": "0.0.1",
+  "description": "A terminal utility for generating, editing, and executing programs in any language.",
+  "version": "0.0.3",
   "license": "MIT",
   "type": "module",
   "platform": "node",
