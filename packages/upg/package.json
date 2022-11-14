@@ -1,7 +1,7 @@
 {
   "name": "@upg/cli",
   "description": "This software will burn your house down! Do not use!",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "license": "UNLICENSED",
   "type": "module",
   "platform": "node",
@@ -21,7 +21,7 @@
     "./*": "./dist/*/index.js"
   },
   "scripts": {
-    "dev-web": "yarn --cwd ../web dev",
+    "dev-web": "yarn --cwd ../../../upg dev",
     "dev": "concurrently -k \"tsmodule dev\" \"yarn dev-web\"",
     "build": "tsmodule build -b",
     "lint": "eslint --fix",
