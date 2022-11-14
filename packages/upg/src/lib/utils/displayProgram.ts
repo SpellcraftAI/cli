@@ -33,7 +33,6 @@ export const displayProgram = (
                 .split("\n")
                 .map((line) => `${plusOrMinus}${!part.removed ? highlight(line, target) : line}`)
                 .map((line) => part.removed ? chalk.dim(chalk.red(line)) : line)
-                // .map((line) => part.removed ? chalk.bgAnsi256(225)(line) : part.added ? chalk.bgAnsi256(158)(line) : line)
                 .join("\n");
 
             const withEndingNewline =

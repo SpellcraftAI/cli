@@ -4,7 +4,7 @@ import { Command, program } from "commander";
 import { readFile } from "fs/promises";
 import { env } from "process";
 
-import { editCommand } from "./commands/edit";
+import { loadCommand } from "./commands/load";
 import { newCommand } from "./commands/new";
 import { chalk } from "./lib/globs/shared";
 import { withFormatting } from "./lib/utils/formatting";
@@ -28,10 +28,10 @@ program
   .action(withFormatting(newCommand));
 
 program
-  .command("edit")
-  .description("Edit a program from a file.")
-  .argument("<file>", "The program to edit.")
-  .action(withFormatting(editCommand));
+  .command("load")
+  .description("Load a program from a file.")
+  .argument("<file>", "The file to load.")
+  .action(withFormatting(loadCommand));
 
 program
   .command("explain")

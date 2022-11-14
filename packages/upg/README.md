@@ -47,7 +47,7 @@ a description of what the program will do.
 
 ### Edit
 
-When you have a program loaded, either by creating a new one or using `upg edit
+When you have a program loaded, either by creating a new one or using `upg load
 <file>`, you can edit it by describing the changes that need to be made.
 
 ## Example: Terminal
@@ -55,137 +55,38 @@ When you have a program loaded, either by creating a new one or using `upg edit
 By default, the language is set to an OS-specific shell: `zsh` for Mac, `bash`
 for Linux, and `cmd` for Windows.
 
-1. **Converting files with ffmpeg**
+### Converting files with `ffmpeg`
 
-    This generates some `ffmpeg` spaghetti and converts a `.mov` file to `.mp4`.
+1. Generating `ffmpeg` spaghetti to convert all `.mov` files in the current
+   directory to `.mp4`:
+   
+   ![](ffmpeg.gif)
 
-    ```
-    ✔ What language is this program written in? … zsh
-    ✔ What will this program do? … convert demo.mov to demo.mp4 using ffmpeg
-        
-          1   #!/bin/zsh
-          2   
-          3   ffmpeg -i demo.mov -vcodec h264 -acodec aac -strict -2 demo.mp4
-        
-        
-    ✔ What would you like to do? › Run
-        
-        ------------------------------
-        Output
-        ------------------------------
-        
-      
-      $ zsh /var/folders/b0/rdq1ghc95sj4cm2qhvqmbrvh0000gn/T/0.eixwzktc9m.zsh
-      
-    ffmpeg version 5.1.2 Copyright (c) 2000-2022 the FFmpeg developers
-      built with Apple clang version 14.0.0 (clang-1400.0.29.102)
-      
-    0kB time=00:00:02.01 bitrate=   0.2kbits/s dup=35 drop=0 frame=  216 fps= 70 q=31.0 size=       0kB time=00:00:02.61 bitrate=   0.1kbits/s dup=42 drop=0 frame=  252 fps= 70 q=31.0 size=       0kB 
-    ...
-    time=00:00:10.73 bitrate= 586.2kbits/s dup=138 drop=0frame=  719 fps= 65 q=-1.0 Lsize=     899kB time=00:00:11.93 bitrate= 617.4kbits/s dup=141 drop=0 speed=1.08x    
-    video:890kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: 1.041413%
-    [libx264 @ 0x11d6050c0] frame I:3     Avg QP:17.90  size:169234
-    ...
-    [libx264 @ 0x11d6050c0] kb/s:608.02
-        
-        ------------------------------
-        
-        
-        zsh exited with code 0.
-        Execution time: 11374.89ms
-    ```
+2. Converting screen recordings of these demos to `.gif` for use in this README:
+
+   ![](ffmpeg-gif.gif)
 
 ## Example: Other programs
 
-1. **Generate and demo the Y-combinator function**
+You can generate programs for any language.
 
-    This conversationally generates the Y-combinator function, adds a demo, and
-    executes using [TS Module](https://github.com/tsmodule/tsmodule) (similar to
-    `ts-node`, but won't throw on account of type errors).
+### Generate and demo the Y combinator function
 
-    ```
-    ✔ What language is this program written in? … ts
-    ✔ What will this program do? … define Y combinator function Y(f)
-      
-        1   var Y = function(f) {
-        2     return (function(x) {
-        3       return f(function(y) { return x(x)(y); });
-        4     })(function(x) {
-        5       return f(function(y) { return x(x)(y); });
-        6     });
-        7   };
-      
-      
-    ✔ What would you like to do? › Edit
-    ✔ How should this program should be changed? … add: demo Y(f) with console.log
-      
-      Edited.
-      
-      
-          var Y = function(f) {
-            return (function(x) {
-              return f(function(y) { return x(x)(y); });
-            })(function(x) {
-              return f(function(y) { return x(x)(y); });
-            });
-          
-        -  };
-        +  };
-        +  
-        +  var factorial = Y(function(f) {
-        +    return function(n) {
-        +      return n <= 2 ? n : n * f(n - 1);
-        +    };
-        +  });
-        +  
-        +  console.log(factorial(5));
-      
-      
-    ✔ What would you like to do? › Run
-      
-      ------------------------------
-      Output
-      ------------------------------
-      
+  1. Generating the Y-combinator function, adding a demo, and executing using
+    [TS Module](https://github.com/tsmodule/tsmodule) (similar to `ts-node`, but
+    won't throw on account of type errors):
+    
+      ![](ycombinator.gif)
 
-    $ tsmodule /var/folders/b0/rdq1ghc95sj4cm2qhvqmbrvh0000gn/T/0.brxmlniy2ln.ts
+### Convert to other languages
 
+You can translate programs to other languages using the edit feature. The
+language context will not automatically change yet - in the meantime, use
+**Save** to write to `yc.py` and then `upg load yc.py` to run it as Python.
 
-    $ node --no-warnings --loader file:///Users/lewis/.config/yarn/global/node_modules/@tsmodule/tsmodule/dist/loader/index.js /var/folders/b0/rdq1ghc95sj4cm2qhvqmbrvh0000gn/T/0.brxmlniy2ln.ts
+  1. Translating the Y combinator output above from TypeScript to Python:
 
-    120
-      
-      ------------------------------
-      
-      
-      tsmodule exited with code 0.
-      Execution time: 197.37ms
-    ```
-
-2. **Convert programs between languages**
-
-    This converts the Y combinator program above to Python.
-
-    ```
-    ✔ What would you like to do? › Edit
-    ✔ How should this program should be changed? … refactor: convert to Python
-  
-    Edited.
-
-  
-    -  ...
-    +  def Y(f):
-    +      return (lambda x: f(lambda y: x(x)(y)))(lambda x: f(lambda y: x(x)(y)))
-    +       
-       
-    -  ...
-    +  def factorial(f):
-    +      return lambda n: n if n <= 2 else n * f(n - 1)
-    +       
-       
-    -  ...
-    +  print(Y(factorial)(5))
-    ```
+      ![](yc.gif)
 
 ## Known issues
 
@@ -195,3 +96,5 @@ for Linux, and `cmd` for Windows.
   
       This will be solved in future versions, but for now, use **Copy** or
       **Save** to get it out of the CLI and execute it manually.
+
+      See the **Convert to other languages** section above.

@@ -9,7 +9,7 @@ import { chalk } from "../globs/shared";
 import { error, log, success } from "../utils/log";
 import { NullableAction } from "./types";
 
-const EXECUTION_COMMANDS = {
+export const EXECUTION_COMMANDS = {
   bash: "bash",
   zsh: "zsh",
   python: "python3",
@@ -18,7 +18,7 @@ const EXECUTION_COMMANDS = {
   // typescript: `ts-node -O ${JSON.stringify({ lib: ["dom", "esnext"] })}`,
 };
 
-const PLATFORM_EXTENSIONS = {
+export const PLATFORM_EXTENSIONS = {
   bash: "sh",
   zsh: "zsh",
   python: "py",
@@ -26,8 +26,8 @@ const PLATFORM_EXTENSIONS = {
   typescript: "ts",
 };
 
-const PLATFORMS = Object.keys(EXECUTION_COMMANDS);
-const EXTENSIONS = Object.values(PLATFORM_EXTENSIONS);
+export const PLATFORMS = Object.keys(EXECUTION_COMMANDS);
+export const EXTENSIONS = Object.values(PLATFORM_EXTENSIONS);
 
 export const run: NullableAction = async (state) => {
   if (!state || !state.code) {
