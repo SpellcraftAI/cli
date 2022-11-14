@@ -36,6 +36,8 @@ Using NPM:
 npm i -g @gptlabs/upg
 ```
 
+After installing, you can update with `upg update`.
+
 ## Usage
 
 ### Create
@@ -193,6 +195,3 @@ for Linux, and `cmd` for Windows.
   
       This will be solved in future versions, but for now, use **Copy** or
       **Save** to get it out of the CLI and execute it manually.
-
-  2. We know it is generally confusing to use. It will be made less dogshit over
-     time.

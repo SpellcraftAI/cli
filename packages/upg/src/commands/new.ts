@@ -9,9 +9,9 @@ export type NewOptions = {
 };
 
 export const newCommand = async (
+  target: string,
   description: string,
   {
-    target = "",
     nonInteractive = false,
   }: NewOptions
 ) => {

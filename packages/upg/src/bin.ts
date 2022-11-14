@@ -22,8 +22,8 @@ program
 program
   .command("new", { isDefault: true })
   .description("Create a new program.")
+  .argument("[target]", "The target to generate the script for.\nDefaults to Bash for Linux, ZSH for Mac, and Windows Shell for Windows.")
   .argument("[description]", "A description of the command to generate.")
-  .option("-t, --target [target]", "The target to generate the script for.\nDefaults to Bash for Linux, ZSH for Mac, and Windows Shell for Windows.")
   .option("-n, --non-interactive", "Run without interactivity.")
   .action(withFormatting(newCommand));
 
@@ -35,7 +35,7 @@ program
 
 program
   .command("explain")
-  .description("Explain a program by pasting it or loading from file.")
+  .description("Explain a program by pasting it or loading from file.\n\n")
   // .option("-f, --file [file]", "The file to explain.")
   .action(withFormatting(explainCommand));
 
@@ -47,12 +47,12 @@ program
 
 program
   .command("logout")
-  .description("Log out of your account.\n\n")
+  .description("Log out of your account.")
   .action(withFormatting(logoutCommand));
 
 program
   .command("update")
-  .description("Update the CLI to the latest version.")
+  .description("Update the CLI to the latest version.\n\n")
   .action(withFormatting(updateCommand));
 
 /**
