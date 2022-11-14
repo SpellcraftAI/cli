@@ -8,8 +8,8 @@
 ```
 
 This is an initial public release. It will be ugly. Please send feedback to
-[`@ctjlewis` on
-Twitter](https://twitter.com/ctjlewis).
+[`@gptlabs` on
+Twitter](https://twitter.com/gptlabs).
 
 ## What is UPG?
 
