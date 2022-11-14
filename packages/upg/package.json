@@ -1,14 +1,13 @@
 {
   "name": "@upg/cli",
   "description": "This software will burn your house down! Do not use!",
-  "version": "2.4.1",
-  "license": "UNLICENSED",
+  "version": "2.4.2",
+  "license": "MIT",
   "type": "module",
   "platform": "node",
   "types": "dist/index.d.ts",
   "bin": {
-    "upg": "dist/bin.js",
-    "redacted": "dist/bin.js"
+    "upg": "dist/bin.js"
   },
   "files": [
     "dist/bin.js",

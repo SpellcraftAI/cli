@@ -1,6 +1,6 @@
 {
   "name": "@upg/mono",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "type": "module",
   "platform": "node",
   "types": "dist/index.d.ts",
@@ -24,6 +24,7 @@
     "auth0-node-client": "^2.4.5",
     "ava": "^5.0.1",
     "await-shell": "^34.1.1",
+    "chalk": "^5.1.2",
     "cli-highlight": "^2.1.11",
     "clipboardy": "^3.0.0",
     "commander": "^9.4.1",
@@ -32,15 +33,9 @@
     "diff": "^5.1.0",
     "eslint": "^8.26.0",
     "node-fetch": "^3.2.10",
-    "openai": "^3.1.0",
     "prompts": "^2.4.2",
-    "typescript": "^4.8.4"
-  },
-  "dependencies": {
-    "chalk": "^5.1.2",
-    "next-endpoint": "^5.1.5",
-    "stripe": "^10.17.0",
     "tiny-cli-editor": "^0.1.1",
+    "typescript": "^4.8.4",
     "which": "^3.0.0"
   }
 }
