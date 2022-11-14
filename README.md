@@ -7,7 +7,7 @@ This is a monorepo which contains all of our open source tools.
 
 ### 1. UPG
 
-[`packages/upg`](https://github.com/ctjlewis/upg/tree/master/packages/upg)
+[`packages/upg`](https://github.com/gptlabs/tools/tree/master/packages/upg)
 
 Short for "universal program generator," UPG is a tool for creating and editing
 programs in any language generated with the help of GPT-3.

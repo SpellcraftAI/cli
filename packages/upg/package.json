@@ -1,7 +1,7 @@
 {
   "name": "@gptlabs/upg",
   "description": "A terminal utility for generating, editing, and executing programs in any language.",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "license": "MIT",
   "type": "module",
   "platform": "node",

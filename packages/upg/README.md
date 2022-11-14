@@ -60,11 +60,11 @@ for Linux, and `cmd` for Windows.
 1. Generating `ffmpeg` spaghetti to convert all `.mov` files in the current
    directory to `.mp4`:
    
-   ![](ffmpeg.gif)
+   ![](https://github.com/gptlabs/tools/raw/master/packages/upg/ffmpeg.gif)
 
 2. Converting screen recordings of these demos to `.gif` for use in this README:
 
-   ![](ffmpeg-gif.gif)
+   ![](https://github.com/gptlabs/tools/raw/master/packages/upg/ffmpeg-gif.gif)
 
 ## Example: Other programs
 
@@ -76,7 +76,7 @@ You can generate programs for any language.
     [TS Module](https://github.com/tsmodule/tsmodule) (similar to `ts-node`, but
     won't throw on account of type errors):
     
-      ![](ycombinator.gif)
+      ![](https://github.com/gptlabs/tools/raw/master/packages/upg/ycombinator.gif)
 
 ### Convert to other languages
 
@@ -86,7 +86,7 @@ language context will not automatically change yet - in the meantime, use
 
   1. Translating the Y combinator output above from TypeScript to Python:
 
-      ![](yc.gif)
+      ![](https://github.com/gptlabs/tools/raw/master/packages/upg/yc.gif)
 
 ## Known issues
 
