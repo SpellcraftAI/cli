@@ -85,7 +85,7 @@ Command.prototype.helpInformation = function () {
 /**
  * Warn if a user is trying to access non-auth commands without being logged in.
  */
-const whitelist = ["help", "--help", "login", "logout"];
+const whitelist = ["help", "--help", "login", "logout", "update"];
 if (
   env.NODE_ENV !== "test" &&
   !whitelist.includes(process.argv.slice(2)[0])
