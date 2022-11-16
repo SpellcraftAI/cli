@@ -8,8 +8,7 @@
 ```
 
 This is an initial public release. It will be ugly. Please send feedback to
-[`@gptlabs` on
-Twitter](https://twitter.com/gptlabs).
+[`@gptlabs` on Twitter](https://twitter.com/gptlabs).
 
 ## What is UPG?
 
@@ -70,23 +69,91 @@ for Linux, and `cmd` for Windows.
 
 You can generate programs for any language.
 
-### Generate and demo the Y combinator function
+### Generating and demonstrating the Y combinator function
 
-  1. Generating the Y-combinator function, adding a demo, and executing using
-    [TS Module](https://github.com/tsmodule/tsmodule) (similar to `ts-node`, but
-    won't throw on account of type errors):
+  1. **Generating the Y-combinator function**
+
+      Also adds a demo, and executes using [TS
+      Module](https://github.com/tsmodule/tsmodule)¹.
     
       ![](https://github.com/gptlabs/tools/raw/master/packages/upg/ycombinator.gif)
 
-### Convert to other languages
+      <sub>¹ Similar to `ts-node`, but won't throw on account of type errors.
+      You'll need to install `@tsmodule/tsmodule` for now to run TS.</sub>
+
+  2. **Solving nontrivial problems using an edit loop**
+
+      UPG did not generate a solution to [the minimum edit distance
+      problem](https://leetcode.com/problems/edit-distance/) immediately. It
+      initially contained errors and would not run.
+      
+      First, errors were fixed using **Edit** to tell it: `fix errors: [pasted
+      errors]`. If you are able to identify the error logically and say it
+      conversationally rather than paste an error, that is better. (The person
+      who generated this solution was flying completely blind, could not solve
+      this problem if they wanted to, and had never written C.)
+
+      Then, failed cases were fixed using the following **Edit** pattern:
+      `functionName(input) should equal A, got B`. This was sufficient through
+      trial and error to fix the output for certain cases, until it passed for
+      all tests.
+
+      Finally, once it converged on a working solution, it was asked to optimize
+      performance using the **Edit** command: `refactor: make it faster`. (For
+      some reason, that spell works very well for performance optimization.)
+
+      ![](min-edit.png)
+
+### Converting to other languages
 
 You can translate programs to other languages using the edit feature. The
 language context will not automatically change yet - in the meantime, use
 **Save** to write to `yc.py` and then `upg load yc.py` to run it as Python.
 
-  1. Translating the Y combinator output above from TypeScript to Python:
+  1. **Translating from TypeScript to Python**
+  
+      Translates tthe Y combinator output above.
 
       ![](https://github.com/gptlabs/tools/raw/master/packages/upg/yc.gif)
+
+  2. **Translating comments**
+
+      UPG can translate comments and languages extremely reliably, for basically
+      any language you could name. It speaks English, Chinese, and Japanese very
+      fluently. See examples below for even harder language targets.
+
+      1. **Difficulty: EASY**
+          
+          Translates the comments in the generated minimum edit distance
+          solution to English.
+
+          ![](translate.png)
+     
+      3. **Difficulty: HARD**
+
+          Translates the comments in the same solution to Latin. 
+          
+          Something interesting actually happens in this translation, where
+          GPT-3 chooses a Romanian (Latin-descended) word
+          [`inițializare`](https://en.wiktionary.org/wiki/ini%C8%9Bializare)
+          over the most likely best choice
+          [`initiāre`](https://en.wiktionary.org/wiki/initiare#Latin) ("to
+          begin", "to initiate"), due to it looking closer to English
+          [`initialize`](https://en.wiktionary.org/wiki/initialize). But it
+          remains a reliable transation more or less.
+
+          ![](latin.png)
+
+      4. **Difficulty: SUICIDE**
+
+          Translates the comments in the same solution to Māori.
+          
+          It seems to drop the macrons (e.g. ā) due to code comments almost
+          always being ASCII only. 
+
+          ![](maori.png)
+
+
 
 ## Known issues
 
