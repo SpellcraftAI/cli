@@ -108,48 +108,50 @@ You can translate programs to other languages using the edit feature. The
 language context will not automatically change yet - in the meantime, use
 **Save** to write to `yc.py` and then `upg load yc.py` to run it as Python.
 
-  1. **Translating from TypeScript to Python**
-  
-      Translates tthe Y combinator output above.
+#### Translating from TypeScript to Python
 
-      ![](https://github.com/gptlabs/tools/raw/master/packages/upg/yc.gif)
+Translates tthe Y combinator output above.
 
-  2. **Translating comments**
+![](https://github.com/gptlabs/tools/raw/master/packages/upg/yc.gif)
 
-      UPG can translate comments and languages extremely reliably, for basically
-      any language you could name. It speaks English, Chinese, and Japanese very
-      fluently. See examples below for even harder language targets.
 
-      1. **Difficulty: EASY**
-          
-          Translates the comments in the generated minimum edit distance
-          solution to English.
+#### Translating comments
 
-          ![](https://github.com/gptlabs/tools/raw/master/packages/upg/translate.png)
-     
-      3. **Difficulty: HARD**
+UPG can translate comments and languages extremely reliably, for basically
+any language you could name. It speaks English, Chinese, and Japanese very
+fluently. See examples below for even harder language targets.
 
-          Translates the comments in the same solution to Latin. 
-          
-          Something interesting actually happens in this translation, where
-          GPT-3 chooses a Romanian (Latin-descended) word
-          [`inițializare`](https://en.wiktionary.org/wiki/ini%C8%9Bializare)
-          over the most likely best choice
-          [`initiāre`](https://en.wiktionary.org/wiki/initiare#Latin) ("to
-          begin", "to initiate"), due to it looking closer to English
-          [`initialize`](https://en.wiktionary.org/wiki/initialize). But it
-          remains a reliable transation more or less.
+**Difficulty: EASY**
 
-          ![](https://github.com/gptlabs/tools/raw/master/packages/upg/latin.png)
+Translates the comments in the generated minimum edit distance
+solution to English.
 
-      4. **Difficulty: SUICIDE**
+![](https://github.com/gptlabs/tools/raw/master/packages/upg/translate.png)
 
-          Translates the comments in the same solution to Māori.
-          
-          It seems to drop the macrons (e.g. ā) due to code comments almost
-          always being ASCII only. 
+**Difficulty: HARD**
 
-          ![](https://github.com/gptlabs/tools/raw/master/packages/upg/maori.png)
+Translates the comments in the same solution to Latin. 
+
+Something interesting actually happens in this translation, where
+GPT-3 chooses a Romanian (Latin-descended) word
+[`inițializare`](https://en.wiktionary.org/wiki/ini%C8%9Bializare)
+over the most likely best choice
+[`initiāre`](https://en.wiktionary.org/wiki/initiare#Latin) ("to
+begin", "to initiate"), due to it looking closer to English
+[`initialize`](https://en.wiktionary.org/wiki/initialize). But it
+remains a reliable transation more or less.
+
+![](https://github.com/gptlabs/tools/raw/master/packages/upg/latin.png)
+
+**Difficulty: SUICIDE**
+
+Translates the comments in the same solution to Māori, an Eastern Polynesian
+language with approximately 180,000 native speakers.
+
+It seems to drop the macrons (e.g. ā) due to code comments almost
+always being ASCII only. 
+
+![](https://github.com/gptlabs/tools/raw/master/packages/upg/maori.png)
 
 
 
