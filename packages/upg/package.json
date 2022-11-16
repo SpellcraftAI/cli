@@ -6,7 +6,7 @@
     "GPT-3",
     "GPT Labs"
   ],
-  "version": "0.0.10",
+  "version": "0.0.11",
   "license": "MIT",
   "type": "module",
   "platform": "node",
@@ -33,5 +33,9 @@
     "test": "cross-env NODE_ENV=test concurrently -k -s first \"yarn ava\" \"yarn dev-web\"",
     "update-tests": "cross-env NODE_ENV=test concurrently -k -s first \"yarn ava -u\" \"yarn dev-web\"",
     "prepublishOnly": "yarn test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gptlabs/tools.git"
   }
 }
