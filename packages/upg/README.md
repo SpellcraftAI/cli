@@ -100,7 +100,7 @@ Finally, once it converged on a working solution, it was asked to optimize
 performance using the **Edit** command: `refactor: make it faster`. (For
 some reason, that spell works very well for performance optimization.)
 
-![](min-edit.png)
+![](https://github.com/gptlabs/tools/raw/master/packages/upg/min-edit.png)
 
 ### Converting to other languages
 
@@ -125,7 +125,7 @@ language context will not automatically change yet - in the meantime, use
           Translates the comments in the generated minimum edit distance
           solution to English.
 
-          ![](translate.png)
+          ![](https://github.com/gptlabs/tools/raw/master/packages/upg/translate.png)
      
       3. **Difficulty: HARD**
 
@@ -140,7 +140,7 @@ language context will not automatically change yet - in the meantime, use
           [`initialize`](https://en.wiktionary.org/wiki/initialize). But it
           remains a reliable transation more or less.
 
-          ![](latin.png)
+          ![](https://github.com/gptlabs/tools/raw/master/packages/upg/latin.png)
 
       4. **Difficulty: SUICIDE**
 
@@ -149,7 +149,7 @@ language context will not automatically change yet - in the meantime, use
           It seems to drop the macrons (e.g. ā) due to code comments almost
           always being ASCII only. 
 
-          ![](maori.png)
+          ![](https://github.com/gptlabs/tools/raw/master/packages/upg/maori.png)
 
 
 
