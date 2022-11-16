@@ -10,7 +10,8 @@
   ],
   "scripts": {
     "build": "yarn workspaces run build",
-    "test": "yarn workspaces run test"
+    "test": "yarn workspaces run test",
+    "publish": "yarn workspaces run publish"
   },
   "devDependencies": {
     "@tsmodule/tsmodule": "^40.10.0",

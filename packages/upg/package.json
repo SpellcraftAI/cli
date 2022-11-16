@@ -6,7 +6,7 @@
     "GPT-3",
     "GPT Labs"
   ],
-  "version": "0.0.7",
+  "version": "0.0.9",
   "license": "MIT",
   "type": "module",
   "platform": "node",
@@ -25,8 +25,8 @@
     "./*": "./dist/*/index.js"
   },
   "scripts": {
-    "dev-web": "yarn --cwd ../../../upg dev",
-    "dev": "concurrently -k \"tsmodule dev\" \"yarn dev-web\"",
+    "dev-web": "yarn --cwd ../../../api dev",
+    "dev": "tsmodule dev",
     "build": "tsmodule build -b",
     "lint": "eslint --fix",
     "pretest": "yarn build && npm link -f",
