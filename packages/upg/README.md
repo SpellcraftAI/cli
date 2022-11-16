@@ -71,38 +71,36 @@ You can generate programs for any language.
 
 ### Generating and demonstrating the Y combinator function
 
-  1. **Generating the Y-combinator function**
+Also adds a demo, and executes using [TS
+Module](https://github.com/tsmodule/tsmodule)¹.
 
-      Also adds a demo, and executes using [TS
-      Module](https://github.com/tsmodule/tsmodule)¹.
-    
-      ![](https://github.com/gptlabs/tools/raw/master/packages/upg/ycombinator.gif)
+![](https://github.com/gptlabs/tools/raw/master/packages/upg/ycombinator.gif)
 
-      <sub>¹ Similar to `ts-node`, but won't throw on account of type errors.
-      You'll need to install `@tsmodule/tsmodule` for now to run TS.</sub>
+<sub>¹ Similar to `ts-node`, but won't throw on account of type errors.
+You'll need to install `@tsmodule/tsmodule` for now to run TS.</sub>
 
-  2. **Solving nontrivial problems using an edit loop**
+ ### Solving nontrivial problems using an edit loop
 
-      UPG did not generate a solution to [the minimum edit distance
-      problem](https://leetcode.com/problems/edit-distance/) immediately. It
-      initially contained errors and would not run.
-      
-      First, errors were fixed using **Edit** to tell it: `fix errors: [pasted
-      errors]`. If you are able to identify the error logically and say it
-      conversationally rather than paste an error, that is better. (The person
-      who generated this solution was flying completely blind, could not solve
-      this problem if they wanted to, and had never written C.)
+UPG did not generate a solution to [the minimum edit distance
+problem](https://leetcode.com/problems/edit-distance/) immediately. It
+initially contained errors and would not run.
 
-      Then, failed cases were fixed using the following **Edit** pattern:
-      `functionName(input) should equal A, got B`. This was sufficient through
-      trial and error to fix the output for certain cases, until it passed for
-      all tests.
+First, errors were fixed using **Edit** to tell it: `fix errors: [pasted
+errors]`. If you are able to identify the error logically and say it
+conversationally rather than paste an error, that is better. (The person
+who generated this solution was flying completely blind, could not solve
+this problem if they wanted to, and had never written C.)
 
-      Finally, once it converged on a working solution, it was asked to optimize
-      performance using the **Edit** command: `refactor: make it faster`. (For
-      some reason, that spell works very well for performance optimization.)
+Then, failed cases were fixed using the following **Edit** pattern:
+`functionName(input) should equal A, got B`. This was sufficient through
+trial and error to fix the output for certain cases, until it passed for
+all tests.
 
-      ![](min-edit.png)
+Finally, once it converged on a working solution, it was asked to optimize
+performance using the **Edit** command: `refactor: make it faster`. (For
+some reason, that spell works very well for performance optimization.)
+
+![](min-edit.png)
 
 ### Converting to other languages
 
