@@ -3,6 +3,8 @@ import { env } from "process";
 import { Chalk } from "chalk";
 import { highlight as highlightRaw } from "cli-highlight";
 
+export const SUBSCRIPTION_LOCK = true;
+
 export const DEVELOPMENT = (
   /** Inlined by compiler. */
   process.env.NODE_ENV === "development" ||

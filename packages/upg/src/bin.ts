@@ -6,7 +6,7 @@ import { env } from "process";
 
 import { loadCommand } from "./commands/load";
 import { newCommand } from "./commands/new";
-import { chalk } from "./lib/globs/shared";
+import { chalk, SUBSCRIPTION_LOCK } from "./lib/globs/shared";
 import { withFormatting } from "./lib/utils/formatting";
 import { error, success } from "./lib/utils/log";
 import { AUTH0_CLIENT } from "./lib/globs/node";
@@ -14,6 +14,7 @@ import { loginCommand } from "./commands/login";
 import { logoutCommand } from "./commands/logout";
 import { explainCommand } from "./commands/explain";
 import { updateCommand } from "./commands/update";
+import { checkSubscription } from "./lib/utils/checkSubscription";
 
 program
   .name("upg")
@@ -101,6 +102,10 @@ if (
 
   // console.log(user);
   success(`Logged in as ${chalk.underline(user.email)}.`);
+
+  if (SUBSCRIPTION_LOCK) {
+    await withFormatting(checkSubscription)();
+  }
 }
 
 program.parse(process.argv);
