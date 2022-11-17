@@ -4,6 +4,7 @@ import { Command, program } from "commander";
 import { readFile } from "fs/promises";
 import { env } from "process";
 
+import { oraPromise } from "ora";
 import { loadCommand } from "./commands/load";
 import { newCommand } from "./commands/new";
 import { chalk, SUBSCRIPTION_LOCK } from "./lib/globs/shared";
@@ -104,7 +105,10 @@ if (
   success(`Logged in as ${chalk.underline(user.email)}.`);
 
   if (SUBSCRIPTION_LOCK) {
-    await withFormatting(checkSubscription)();
+    await oraPromise(
+      withFormatting(checkSubscription),
+      "Checking subscription...\n"
+    );
   }
 }
 

@@ -10,6 +10,7 @@ import prompts from "prompts";
 import { Change } from "diff";
 import { newProgram } from "./actions/new";
 import chalk from "chalk";
+import { explain } from "./actions/explain";
 
 
 export type State = {
@@ -40,6 +41,11 @@ export const nextState = async (current: State) => {
         value: "edit",
         description: "Edit this program.",
         selected: true,
+      },
+      {
+        title: "Explain",
+        value: "explain",
+        description: "Explain what this program does.",
       },
       {
         title: "Run",
@@ -74,8 +80,7 @@ export const nextState = async (current: State) => {
 
   switch (action) {
     case "new":
-      const program = await newProgram(null);
-      next = program;
+      next = await newProgram(null);
       break;
 
     case "edit":
@@ -88,6 +93,14 @@ export const nextState = async (current: State) => {
         ...current,
         ...edited,
       };
+      break;
+
+    case "explain":
+      if (!current.code) {
+        throw new Error("No code to explain.");
+      }
+
+      next = await explain(current);
       break;
 
     case "run":
