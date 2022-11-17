@@ -110,7 +110,7 @@ language context will not automatically change yet - in the meantime, use
 
 #### Translating from TypeScript to Python
 
-Translates tthe Y combinator output above.
+Translates the Y combinator output above.
 
 ![](https://github.com/gptlabs/tools/raw/master/packages/upg/yc.gif)
 
@@ -158,10 +158,11 @@ always being ASCII only.
 ## Known issues
 
   1. It is not possible yet to switch the language context for a translation,
-      i.e. the CLI cannot know the above example to Python, and if you select
-      **Run**, it will attempt to execute it as TS.
+      i.e. the CLI cannot know the above example was translated to Python, and
+      if you select **Run**, it will attempt to execute it as TS.
   
       This will be solved in future versions, but for now, use **Copy** or
-      **Save** to get it out of the CLI and execute it manually.
+      **Save** to get it out of the CLI and execute it manually, or load it with
+      `upg load [new-file]` and then **Run**.
 
       See the **Convert to other languages** section above.
