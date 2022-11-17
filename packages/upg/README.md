@@ -49,7 +49,7 @@ a description of what the program will do.
 When you have a program loaded, either by creating a new one or using `upg load
 <file>`, you can edit it by describing the changes that need to be made.
 
-## Explain
+### Explain
 
 When you have a program loaded, you can ask UPG to explain it using the
 **Explain** command. We attempt to generate the most useful, detailed
