@@ -59,22 +59,28 @@ for Linux, and `cmd` for Windows.
 1. Generating `ffmpeg` spaghetti to convert all `.mov` files in the current
    directory to `.mp4`:
    
-   ![](https://github.com/gptlabs/tools/raw/master/packages/upg/ffmpeg.gif)
+   ![](https://github.com/gptlabs/tools/raw/master/packages/upg/assets/ffmpeg.gif)
 
 2. Converting screen recordings of these demos to `.gif` for use in this README:
 
-   ![](https://github.com/gptlabs/tools/raw/master/packages/upg/ffmpeg-gif.gif)
+   ![](https://github.com/gptlabs/tools/raw/master/packages/upg/assets/ffmpeg-gif.gif)
 
 ## Example: Other programs
 
 You can generate programs for any language.
+
+### Plotting the Mandelbrot set with Python
+
+An oldie but a goodie.
+
+![](https://github.com/gptlabs/tools/raw/master/packages/upg/assets/mandelbrot.gif)
 
 ### Generating and demonstrating the Y combinator function
 
 Also adds a demo, and executes using [TS
 Module](https://github.com/tsmodule/tsmodule)¹.
 
-![](https://github.com/gptlabs/tools/raw/master/packages/upg/ycombinator.gif)
+![](https://github.com/gptlabs/tools/raw/master/packages/upg/assets/ycombinator.gif)
 
 <sub>¹ Similar to `ts-node`, but won't throw on account of type errors.
 You'll need to install `@tsmodule/tsmodule` for now to run TS.</sub>
@@ -100,7 +106,7 @@ Finally, once it converged on a working solution, it was asked to optimize
 performance using the **Edit** command: `refactor: make it faster`. (For
 some reason, that spell works very well for performance optimization.)
 
-![](https://github.com/gptlabs/tools/raw/master/packages/upg/min-edit.png)
+![](https://github.com/gptlabs/tools/raw/master/packages/upg/assets/min-edit.png)
 
 ### Converting to other languages
 
@@ -112,7 +118,7 @@ language context will not automatically change yet - in the meantime, use
 
 Translates the Y combinator output above.
 
-![](https://github.com/gptlabs/tools/raw/master/packages/upg/yc.gif)
+![](https://github.com/gptlabs/tools/raw/master/packages/upg/assets/yc.gif)
 
 
 #### Translating comments
@@ -126,7 +132,7 @@ fluently. See examples below for even harder language targets.
 Translates the comments in the generated minimum edit distance
 solution to English.
 
-![](https://github.com/gptlabs/tools/raw/master/packages/upg/translate.png)
+![](https://github.com/gptlabs/tools/raw/master/packages/upg/assets/translate.png)
 
 **Difficulty: HARD**
 
@@ -141,7 +147,7 @@ begin", "to initiate"), due to it looking closer to English
 [`initialize`](https://en.wiktionary.org/wiki/initialize). But it
 remains a reliable transation more or less.
 
-![](https://github.com/gptlabs/tools/raw/master/packages/upg/latin.png)
+![](https://github.com/gptlabs/tools/raw/master/packages/upg/assets/latin.png)
 
 **Difficulty: SUICIDE**
 
@@ -151,7 +157,7 @@ language with approximately 180,000 native speakers.
 It seems to drop the macrons (e.g. ā) due to code comments almost
 always being ASCII only. 
 
-![](https://github.com/gptlabs/tools/raw/master/packages/upg/maori.png)
+![](https://github.com/gptlabs/tools/raw/master/packages/upg/assets/maori.png)
 
 
 
