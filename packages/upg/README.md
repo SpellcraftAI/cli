@@ -49,6 +49,12 @@ a description of what the program will do.
 When you have a program loaded, either by creating a new one or using `upg load
 <file>`, you can edit it by describing the changes that need to be made.
 
+## Explain
+
+When you have a program loaded, you can ask UPG to explain it using the
+**Explain** command. We attempt to generate the most useful, detailed
+explanation possible.
+
 ## Example: Terminal
 
 By default, the language is set to an OS-specific shell: `zsh` for Mac, `bash`
@@ -85,7 +91,7 @@ Module](https://github.com/tsmodule/tsmodule)¹.
 <sub>¹ Similar to `ts-node`, but won't throw on account of type errors.
 You'll need to install `@tsmodule/tsmodule` for now to run TS.</sub>
 
- ### Solving nontrivial problems using an edit loop
+### Solving nontrivial problems using an edit loop
 
 UPG did not generate a solution to [the minimum edit distance
 problem](https://leetcode.com/problems/edit-distance/) immediately. It
@@ -159,7 +165,21 @@ always being ASCII only.
 
 ![](https://github.com/gptlabs/tools/raw/master/packages/upg/assets/maori.png)
 
+## Example: Explanations
 
+Use the **Explain** command after loading a program to generate a detailed
+explanation of what it does.
+
+### Explaining the UPG-generated solution to the minimum edit distance problem
+
+The following explanation was generated:
+
+> The program is a solution to the Levenshtein Distance problem, which is the
+> minimum number of edits (insertions, deletions, or substitutions) needed to
+> transform one string into another. The program uses a dynamic programming
+> approach to solving the problem.
+
+![](https://github.com/gptlabs/tools/raw/master/packages/upg/assets/explain.png)
 
 ## Known issues
 
