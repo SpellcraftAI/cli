@@ -107,7 +107,10 @@ if (
   if (SUBSCRIPTION_LOCK) {
     await oraPromise(
       withFormatting(checkSubscription),
-      "Checking subscription...\n"
+      {
+        text: "Checking subscription...\n",
+        indent: 4,
+      }
     );
   }
 }
