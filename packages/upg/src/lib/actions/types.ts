@@ -6,7 +6,7 @@ import { State } from "../state";
  */
 export type NullableAction<T = never> = (
   state: State | null,
-  other?: T
+  options?: T
 ) => Promise<State | null>;
 
 /**
@@ -14,5 +14,5 @@ export type NullableAction<T = never> = (
  */
 export type Action<T = never> = (
   state: State | null,
-  other?: T
+  options?: T
 ) => Promise<State>;

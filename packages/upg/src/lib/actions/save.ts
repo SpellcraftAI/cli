@@ -7,7 +7,7 @@ import { dirname } from "path";
 import { success } from "../utils/log";
 import { NullableAction } from "./types";
 
-export const save: NullableAction<string | undefined> = async (state) => {
+export const save: NullableAction = async (state) => {
   if (!state || !state.code) {
     throw new Error("Nothing to save.");
   }

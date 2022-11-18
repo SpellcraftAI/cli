@@ -3,21 +3,31 @@ import { DOMAIN_URL } from "../globs/shared";
 import prompts from "prompts";
 
 import { diffLines } from "diff";
-import { success } from "../utils/log";
+import { error, success } from "../utils/log";
 import { NullableAction } from "./types";
 import { AUTH0_CLIENT } from "../globs/node";
 
-export const edit: NullableAction = async (state) => {
+export const edit: NullableAction<{ instruction?: string }> =
+async (state, { instruction } = {}) => {
   if (!state || !state.code) {
     throw new Error("Nothing to edit.");
   }
 
   const { code } = state;
-  const { instruction } = await prompts({
-    type: "text",
-    name: "instruction",
-    message: "How should this program should be changed?",
-  });
+  if (!instruction) {
+    const { instruction: promptInstruction } = await prompts({
+      type: "text",
+      name: "instruction",
+      message: "How should this program should be changed?",
+    });
+
+    instruction = promptInstruction;
+  }
+
+  if (!instruction) {
+    error("No instruction provided.");
+    return null;
+  }
 
   const body = new URLSearchParams({ code, instruction });
   const response = await AUTH0_CLIENT.fetch(

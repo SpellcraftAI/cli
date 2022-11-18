@@ -4,9 +4,9 @@ import prompts from "prompts";
 import { Action } from "./types";
 import { AUTH0_CLIENT } from "../globs/node";
 
-export const newProgram: Action<string | undefined> = async (
+export const newProgram: Action<{ prompt?: string }> = async (
   state,
-  prompt
+  { prompt } = {}
 ) => {
   let target: string | undefined;
   if (state) {

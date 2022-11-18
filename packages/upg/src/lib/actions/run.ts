@@ -9,7 +9,7 @@ import { resolve } from "path";
 
 import { chalk } from "../globs/shared";
 import { error, log, success } from "../utils/log";
-import { NullableAction } from "./types";
+import { Action } from "./types";
 
 export const EXECUTION_COMMANDS = {
   bash: "bash",
@@ -31,7 +31,7 @@ export const PLATFORM_EXTENSIONS = {
 export const PLATFORMS = Object.keys(EXECUTION_COMMANDS);
 export const EXTENSIONS = Object.values(PLATFORM_EXTENSIONS);
 
-export const run: NullableAction = async (state) => {
+export const run: Action = async (state) => {
   if (!state || !state.code) {
     throw new Error("Nothing to run.");
   }
@@ -40,7 +40,7 @@ export const run: NullableAction = async (state) => {
   let { target } = state;
 
   const shell = createShell({
-    stdio: "inherit",
+    stdio: ["inherit", "pipe", "pipe"],
     log: true,
   });
 
@@ -110,7 +110,7 @@ export const run: NullableAction = async (state) => {
   );
 
   const startTime = performance.now();
-  const { code: exitCode } = await shell.run(`${command} ${tempfile}`);
+  const { code: exitCode, stdout, stderr } = await shell.run(`${command} ${tempfile}`);
   const endTime = performance.now();
   const duration = endTime - startTime;
 
@@ -127,5 +127,14 @@ export const run: NullableAction = async (state) => {
    */
   await rm(tempfile);
 
-  return null;
+  const lastRun = {
+    exitCode,
+    stderr,
+    stdout,
+  };
+
+  return {
+    ...state,
+    lastRun,
+  };
 };
