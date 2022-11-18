@@ -39,6 +39,7 @@
     "url": "https://github.com/gptlabs/tools.git"
   },
   "dependencies": {
-    "auth0-node-client": "^2.4.6"
+    "auth0-node-client": "^2.4.6",
+    "clipboardy": "^3.0.0"
   }
 }
