@@ -22,6 +22,7 @@ export const explainCommand = async () => {
     name: "target",
     message: "What language is this program written in?",
   });
+
   await loop({
     ...initialState,
     target,

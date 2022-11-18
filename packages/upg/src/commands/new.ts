@@ -21,7 +21,7 @@ export const newCommand = async (
     }
   }
 
-  const initialState = await newProgram({ code: "", target }, description);
+  const initialState = await newProgram({ code: "", target }, { prompt: description });
   if (!initialState || !initialState.code) {
     throw new Error("No code generated.");
   }

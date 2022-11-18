@@ -19,11 +19,55 @@ export type State = {
   file?: string;
   diff?: Change[];
   explanation?: string;
+  lastRun?: {
+    exitCode: number | null;
+    stdout: string;
+    stderr: string;
+  };
+};
+
+export type NextState = {
+  next: State | null;
+  done: boolean;
+  undo: boolean;
 };
 
 
-export const nextState = async (current: State) => {
+export const nextState = async (current: State): Promise<NextState> => {
   let next: State | null = null;
+
+  if (current?.lastRun?.exitCode !== 0 && current?.lastRun?.stderr) {
+    const { autofix } = await prompts({
+      type: "confirm",
+      name: "autofix",
+      message: "The last run failed. Would you like to autofix?",
+    });
+
+    if (autofix) {
+      const autofixPrompt = `fix errors from stderr:\n\n${current.lastRun.stderr}`;
+      const edited = await edit(current, { instruction: autofixPrompt });
+
+      if (edited) {
+        displayProgram({ code: edited.code, target: edited.target });
+
+        const { runAgain } = await prompts({
+          type: "confirm",
+          name: "runAgain",
+          message: "Would you like to run this fix?",
+        });
+
+        if (runAgain) {
+          next = await run(edited);
+        }
+      }
+
+      return {
+        next,
+        done: false,
+        undo: false,
+      };
+    }
+  }
 
   const { action } = await prompts({
     type: "select",
@@ -104,7 +148,7 @@ export const nextState = async (current: State) => {
       break;
 
     case "run":
-      await run(current);
+      next = await run(current);
       break;
 
     case "copy":
