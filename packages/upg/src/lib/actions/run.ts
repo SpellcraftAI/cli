@@ -1,5 +1,7 @@
 import prompts from "prompts";
 
+import { performance } from "perf_hooks";
+
 import { createShell } from "await-shell";
 import { rm, writeFile } from "fs/promises";
 import { tmpdir } from "os";
