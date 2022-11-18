@@ -22,7 +22,7 @@
     "@types/which": "^2.0.1",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
-    "auth0-node-client": "^2.4.5",
+    "auth0-node-client": "^2.4.6",
     "ava": "^5.0.1",
     "await-shell": "^34.1.1",
     "chalk": "^5.1.2",
