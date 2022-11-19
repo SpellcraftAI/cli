@@ -102,7 +102,7 @@ if (
   }
 
   // console.log(user);
-  success(`Logged in as ${chalk.underline(user.email)}.`);
+  success("Logged in.");
 
   if (SUBSCRIPTION_LOCK) {
     await oraPromise(
