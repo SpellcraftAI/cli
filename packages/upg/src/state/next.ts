@@ -1,37 +1,16 @@
-
-import { edit } from "./actions/edit";
-import { run } from "./actions/run";
-import { save } from "./actions/save";
-import { error, log, success } from "./utils/log";
-import { displayProgram } from "./utils/displayProgram";
-
 import clipboard from "clipboardy";
 import prompts from "prompts";
-import { Change } from "diff";
-import { newProgram } from "./actions/new";
-import chalk from "chalk";
-import { explain } from "./actions/explain";
 
+import { NextState, State } from "./types";
 
-export type State = {
-  code: string;
-  target?: string;
-  file?: string;
-  diff?: Change[];
-  explanation?: string;
-  lastRun?: {
-    exitCode: number | null;
-    stdout: string;
-    stderr: string;
-  };
-};
+import { edit } from "../actions/edit";
+import { run } from "../actions/run";
+import { save } from "../actions/save";
+import { newProgram } from "../actions/new";
+import { explain } from "../actions/explain";
 
-export type NextState = {
-  next: State | null;
-  done: boolean;
-  undo: boolean;
-};
-
+import { success } from "../utils/log";
+import { displayProgram } from "../utils/displayProgram";
 
 export const nextState = async (current: State): Promise<NextState> => {
   let next: State | null = null;
@@ -190,45 +169,4 @@ export const nextState = async (current: State): Promise<NextState> => {
 };
 
 
-export const loop = async (
-  initialState: State,
-): Promise<State | null> => {
-  const stack: State[] = [initialState];
-  let stackIndex = 0;
-  let current: State;
 
-  while (true) {
-    current = stack[stackIndex] || null;
-    if (!current) {
-      break;
-    }
-
-    if (current.explanation) {
-      log(chalk.dim(chalk.bold("Explanation")), current.explanation);
-    }
-
-    displayProgram(current);
-
-    if (!current?.code) {
-      error("Warning: Empty program. Reverting.");
-
-      stack.pop();
-      stackIndex--;
-      continue;
-    }
-
-    const { next, done, undo } = await nextState(current);
-
-    if (done) {
-      break;
-    } else if (undo) {
-      stack.pop();
-      stackIndex--;
-    } else if (next) {
-      stack.push(next);
-      stackIndex++;
-    }
-  }
-
-  return current;
-};

@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
-import { newProgram } from "../lib/actions/new";
-import { loop } from "../lib/state";
-import { displayProgram } from "../lib/utils/displayProgram";
+import { newProgram } from "../actions/new";
+import { loop } from "../state";
+import { displayProgram } from "../utils/displayProgram";
 
 export type NewOptions = {
   target: string;

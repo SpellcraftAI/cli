@@ -3,19 +3,21 @@
 import { Command, program } from "commander";
 import { readFile } from "fs/promises";
 import { env } from "process";
-
 import { oraPromise } from "ora";
+
+import { chalk, SUBSCRIPTION_LOCK } from "./globs/shared";
+import { AUTH0_CLIENT } from "./globs/node";
+
+import { withFormatting } from "./utils/formatting";
+import { error, success } from "./utils/log";
+import { checkSubscription } from "./utils/checkSubscription";
+
 import { loadCommand } from "./commands/load";
 import { newCommand } from "./commands/new";
-import { chalk, SUBSCRIPTION_LOCK } from "./lib/globs/shared";
-import { withFormatting } from "./lib/utils/formatting";
-import { error, success } from "./lib/utils/log";
-import { AUTH0_CLIENT } from "./lib/globs/node";
 import { loginCommand } from "./commands/login";
 import { logoutCommand } from "./commands/logout";
 import { explainCommand } from "./commands/explain";
 import { updateCommand } from "./commands/update";
-import { checkSubscription } from "./lib/utils/checkSubscription";
 
 program
   .name("upg")

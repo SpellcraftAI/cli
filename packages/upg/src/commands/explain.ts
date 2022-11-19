@@ -1,9 +1,9 @@
 // @ts-ignore - No types
 import editor from "tiny-cli-editor";
 import prompts from "prompts";
-import { explain } from "../lib/actions/explain";
-import { loop } from "../lib/state";
-import { log } from "../lib/utils/log";
+import { explain } from "../actions/explain";
+import { loop } from "../state";
+import { log } from "../utils/log";
 
 export const explainCommand = async () => {
   const code: string = await new Promise((resolve, reject) => {

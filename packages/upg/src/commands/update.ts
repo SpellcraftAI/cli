@@ -1,6 +1,7 @@
 import which from "which";
 import { createShell } from "await-shell";
-import { logDim, success } from "../lib/utils/log";
+
+import { logDim, success } from "../utils/log";
 
 export const updateCommand = async () => {
   const yarnPath = which.sync("yarn", { nothrow: true });

@@ -1,7 +1,7 @@
 import { readFile } from "fs/promises";
 import { extname } from "path";
 
-import { loop, State } from "../lib/state";
+import { loop, State } from "../state";
 
 /**
  * Edit code from a file.

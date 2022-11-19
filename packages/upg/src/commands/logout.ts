@@ -1,5 +1,5 @@
-import { AUTH0_CLIENT } from "../lib/globs/node";
-import { success } from "../lib/utils/log";
+import { AUTH0_CLIENT } from "../globs/node";
+import { success } from "../utils/log";
 
 export const logoutCommand = async () => {
   await AUTH0_CLIENT.logout();
