@@ -34,7 +34,7 @@ export const updateCommand = async () => {
     }
 
     log(chalk.bold("Updating upg via NPM."));
-    await shell.run("npm install -g @gptlabs/upg");
+    await shell.run("npm update -g @gptlabs/upg");
   }
 
   success("Updated successfully.");
