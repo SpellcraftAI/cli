@@ -72,10 +72,10 @@
   resolved "https://registry.yarnpkg.com/@socket.io/component-emitter/-/component-emitter-3.1.0.tgz#96116f2a912e0c02817345b3c10751069920d553"
   integrity sha512-+9jVqKhRSpsc591z5vX+X5Yyw+he/HCB4iQ/RYxw35CEPaY1gnsNE43nf9n9AaYjAQrTiI/mOwKUKdUs9vf7Xg==
 
-"@tsmodule/tsmodule@^40.10.0":
-  version "40.11.0"
-  resolved "https://registry.yarnpkg.com/@tsmodule/tsmodule/-/tsmodule-40.11.0.tgz#09c26d9b6eca4899d3923a5b39690e8419f0f1d3"
-  integrity sha512-Gi/uVC/iy5EcIkfvloFj9R94MIuczdyRWOBEovk9vYX+H6YmnI3xkC+frDKldLQo7+r5F9nJG9OPKqdh89b/TQ==
+"@tsmodule/tsmodule@^40.16.0":
+  version "40.16.0"
+  resolved "https://registry.yarnpkg.com/@tsmodule/tsmodule/-/tsmodule-40.16.0.tgz#ca93ef4732aca3bd8f4215d866cf5302d1078dbe"
+  integrity sha512-0pf4EpE4ok5zFxV8YI+Q9RbgFORWmwsw1CphkN/Xu63Y3RxYGjs+/8z7uzeNeBGLXUHrrsFOzup3pXLqcNsSiQ==
   dependencies:
     esbuild "0.15.12"
     typescript "^4.8.4"

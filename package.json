@@ -14,7 +14,7 @@
     "publish": "yarn workspaces run publish"
   },
   "devDependencies": {
-    "@tsmodule/tsmodule": "^40.10.0",
+    "@tsmodule/tsmodule": "^40.16.0",
     "@types/auth0": "^2.35.7",
     "@types/diff": "^5.0.2",
     "@types/node": "^18.11.9",
