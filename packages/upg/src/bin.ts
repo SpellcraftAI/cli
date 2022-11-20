@@ -8,7 +8,7 @@ import { oraPromise } from "ora";
 import { chalk, SUBSCRIPTION_LOCK } from "./globs/shared";
 import { AUTH0_CLIENT } from "./globs/node";
 
-import { withFormatting } from "./utils/formatting";
+import { withErrorFormatting } from "./utils/errorFormatting";
 import { error, log, success } from "./utils/log";
 import { checkSubscription } from "./utils/checkSubscription";
 
@@ -20,6 +20,11 @@ import { explainCommand } from "./commands/explain";
 import { updateCommand } from "./commands/update";
 import { getPackageJsonValue } from "./packageJson";
 
+const VERSION = await getPackageJsonValue("version");
+if (!VERSION) {
+  throw new Error("Failed to get version. Please report this: https://twitter.com/gptlabs");
+}
+
 program
   .name("upg")
   .description("Generate programs for any language or platform.");
@@ -30,42 +35,41 @@ program
   .argument("[target]", "The target to generate the script for.\nDefaults to Bash for Linux, ZSH for Mac, and Windows Shell for Windows.")
   .argument("[description]", "A description of the command to generate.")
   .option("-n, --non-interactive", "Run without interactivity.")
-  .action(withFormatting(newCommand));
+  .action(withErrorFormatting(newCommand));
 
 program
   .command("load")
   .description("Load a program from a file.")
   .argument("<file>", "The file to load.")
-  .action(withFormatting(loadCommand));
+  .action(withErrorFormatting(loadCommand));
 
 program
   .command("explain")
   .description("Explain a program by pasting it or loading from file.\n\n")
   // .option("-f, --file [file]", "The file to explain.")
-  .action(withFormatting(explainCommand));
+  .action(withErrorFormatting(explainCommand));
 
 
 program
   .command("login")
   .description("Log in to your account.")
-  .action(withFormatting(loginCommand));
+  .action(withErrorFormatting(loginCommand));
 
 program
   .command("logout")
   .description("Log out of your account.")
-  .action(withFormatting(logoutCommand));
+  .action(withErrorFormatting(logoutCommand));
 
 program
   .command("update")
   .description("Update the CLI to the latest version.\n\n")
-  .action(withFormatting(updateCommand));
+  .action(withErrorFormatting(updateCommand));
 
 program
   .command("version")
   .description("Check the current version of UPG.")
-  .action(async () => {
-    const version = await getPackageJsonValue("version");
-    log(`UPG version: ${chalk.underline(version)}.`);
+  .action(() => {
+    log(`UPG version: ${chalk.underline(VERSION)}.`);
   });
 
 /**
@@ -78,10 +82,17 @@ const logo = await readFile(logoFile, "utf8");
 const taglines = await readFile(taglinesFile, "utf8").then((data) => data.split("\n"));
 
 if (env.NODE_ENV !== "test") {
-  log(chalk.dim(logo.replace(
-    "Not competent enough to render a tagline!",
-    taglines[Math.floor(Math.random() * taglines.length)]
-  )));
+  log(chalk.dim(
+    logo
+      .replace(
+        "Not competent enough to render a tagline!",
+        taglines[Math.floor(Math.random() * taglines.length)]
+      )
+      .replace(
+        "(A version number goes here)",
+        VERSION
+      )
+  ));
 }
 
 /**
@@ -115,7 +126,7 @@ if (
 
   if (SUBSCRIPTION_LOCK) {
     await oraPromise(
-      withFormatting(checkSubscription),
+      withErrorFormatting(checkSubscription),
       {
         text: "Checking subscription...\n",
         indent: 4,

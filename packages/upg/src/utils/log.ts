@@ -11,18 +11,24 @@ export const log = (...messages: string[]) => {
   console.groupEnd();
 };
 
+export const errorLog = (...messages: string[]) => {
+  console.group();
+  console.group();
+  console.error();
+  console.error(messages.join("\n"));
+  console.error();
+  console.groupEnd();
+  console.groupEnd();
+};
+
 export const logDim = (...messages: string[]) => {
   log(chalk.dim(messages.join("\n")));
 };
 
-export const logBold = (...messages: string[]) => {
-  log(chalk.bold(messages.join("\n")));
-};
-
 export const success = (...messages: string[]) => {
-  logBold(chalk.green(messages.join("\n")));
+  log(chalk.bold(chalk.green(messages.join("\n"))));
 };
 
 export const error = (...messages: string[]) => {
-  logBold(chalk.red(messages.join("\n")));
+  errorLog(chalk.bold(chalk.red(messages.join("\n"))));
 };

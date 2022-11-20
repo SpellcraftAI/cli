@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { chalk } from "../globs/shared";
-import { log, error } from "./log";
+import { error, errorLog } from "./log";
 
 /* eslint-disable no-console */
-export const withFormatting = (fn: (...args: any[]) => any) => {
+export const withErrorFormatting = (fn: (...args: any[]) => any) => {
   return async (...args: any[]) => {
     try {
       return await fn(...args);
@@ -17,8 +17,7 @@ export const withFormatting = (fn: (...args: any[]) => any) => {
         error("Issue with OpenAI API. Please see the status page at:", "https://status.openai.com/");
       }
 
-      log(`${chalk.red("ERROR:")} ${errorMessage}`);
-
+      errorLog(`${chalk.red("ERROR:")} ${errorMessage}`);
       process.exit(1);
     }
   };

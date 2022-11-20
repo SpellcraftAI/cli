@@ -15,7 +15,7 @@ export const checkSubscription = async () => {
       .then(res => res.json()) as any;
 
   if (typeof result.subscription !== "boolean") {
-    throw new Error(result.error);
+    throw new Error(result?.error ?? "Failed to check subscription. Please report this: https://twitter.com/gptlabs");
   }
 
   return result.subscription;
