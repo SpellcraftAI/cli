@@ -3,9 +3,11 @@ import { chalk } from "../globs/shared";
 
 export const log = (...messages: string[]) => {
   console.group();
+  console.group();
   console.log();
   console.log(messages.join("\n"));
   console.log();
+  console.groupEnd();
   console.groupEnd();
 };
 

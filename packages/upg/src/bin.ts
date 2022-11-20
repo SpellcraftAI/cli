@@ -9,7 +9,7 @@ import { chalk, SUBSCRIPTION_LOCK } from "./globs/shared";
 import { AUTH0_CLIENT } from "./globs/node";
 
 import { withFormatting } from "./utils/formatting";
-import { error, success } from "./utils/log";
+import { error, log, success } from "./utils/log";
 import { checkSubscription } from "./utils/checkSubscription";
 
 import { loadCommand } from "./commands/load";
@@ -18,6 +18,7 @@ import { loginCommand } from "./commands/login";
 import { logoutCommand } from "./commands/logout";
 import { explainCommand } from "./commands/explain";
 import { updateCommand } from "./commands/update";
+import { getPackageJsonValue } from "./packageJson";
 
 program
   .name("upg")
@@ -59,6 +60,14 @@ program
   .description("Update the CLI to the latest version.\n\n")
   .action(withFormatting(updateCommand));
 
+program
+  .command("version")
+  .description("Check the current version of UPG.")
+  .action(async () => {
+    const version = await getPackageJsonValue("version");
+    log(`UPG version: ${chalk.underline(version)}.`);
+  });
+
 /**
  * Display logo.
  */
@@ -68,10 +77,8 @@ const taglinesFile = new URL("./taglines.txt", import.meta.url);
 const logo = await readFile(logoFile, "utf8");
 const taglines = await readFile(taglinesFile, "utf8").then((data) => data.split("\n"));
 
-console.group();
-
 if (env.NODE_ENV !== "test") {
-  console.log(chalk.dim(logo.replace(
+  log(chalk.dim(logo.replace(
     "Not competent enough to render a tagline!",
     taglines[Math.floor(Math.random() * taglines.length)]
   )));
@@ -118,4 +125,3 @@ if (
 }
 
 program.parse(process.argv);
-console.groupEnd();
