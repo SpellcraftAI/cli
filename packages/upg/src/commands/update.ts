@@ -1,24 +1,42 @@
 import which from "which";
 import { createShell } from "await-shell";
 
-import { logDim, success } from "../utils/log";
+import { log, success } from "../utils/log";
+import { chalk } from "../globs/shared";
 
 export const updateCommand = async () => {
   const yarnPath = which.sync("yarn", { nothrow: true });
   const npmPath = which.sync("npm", { nothrow: true });
+  const upgPath = which.sync("upg", { nothrow: true });
 
   if (!yarnPath && !npmPath) {
     throw new Error("Neither NPM nor Yarn found in PATH.");
   }
 
+  if (!upgPath) {
+    throw new Error("upg not found in PATH.");
+  }
+
   const shell = createShell();
 
-  if (yarnPath) {
-    logDim("Checking for updates with Yarn...");
+  if (upgPath.includes("yarn")) {
+    if (npmPath) {
+      log(chalk.bold("upg installed via Yarn. Ensuring no NPM copy."));
+      await shell.run("npm uninstall -g @gptlabs/upg");
+    }
+
+    log(chalk.bold("Updating upg via Yarn."));
     await shell.run("yarn global add @gptlabs/upg");
+  } else if (upgPath.includes("npm")) {
+    if (yarnPath) {
+      log(chalk.bold("upg installed via NPM. Ensuring no Yarn copy."));
+      await shell.run("yarn global remove @gptlabs/upg");
+    }
+
+    log(chalk.bold("Updating upg via NPM."));
+    await shell.run("npm install -g @gptlabs/upg");
   } else {
-    logDim("Checking for updates with NPM...");
-    await shell.run("npm i -g @gptlabs/upg");
+    throw new Error("upg not installed via NPM or Yarn.");
   }
 
   success("Updated successfully.");
