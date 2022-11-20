@@ -27,16 +27,11 @@ export const updateCommand = async () => {
 
     log(chalk.bold("Updating upg via Yarn."));
     await shell.run("yarn global add @gptlabs/upg");
-  } else if (upgPath.includes("npm")) {
+  } else {
     if (yarnPath) {
       log(chalk.bold("upg installed via NPM. Ensuring no Yarn copy."));
       await shell.run("yarn global remove @gptlabs/upg");
     }
-
-    log(chalk.bold("Updating upg via NPM."));
-    await shell.run("npm install -g @gptlabs/upg");
-  } else {
-    throw new Error("upg not installed via NPM or Yarn.");
   }
 
   success("Updated successfully.");
