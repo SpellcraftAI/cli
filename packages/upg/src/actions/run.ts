@@ -2,7 +2,7 @@ import prompts from "prompts";
 
 import { performance } from "perf_hooks";
 
-import { createShell } from "await-shell";
+import { createShell } from "universal-shell";
 import { rm, writeFile } from "fs/promises";
 import { tmpdir } from "os";
 import { resolve } from "path";

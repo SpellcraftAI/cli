@@ -1,5 +1,5 @@
 import which from "which";
-import { createShell } from "await-shell";
+import { createShell } from "universal-shell";
 
 import { log, success } from "@tsmodule/log";
 
