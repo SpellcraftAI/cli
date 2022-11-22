@@ -88,7 +88,6 @@ const logo = await readFile(logoFile, "utf8");
 const taglines = await readFile(taglinesFile, "utf8").then((data) => data.split("\n"));
 
 if (env.NODE_ENV !== "test") {
-  log();
   log(
     logo
       .replace(
@@ -142,8 +141,6 @@ if (
         indent: 2,
       }
     );
-
-    log();
   }
 }
 
