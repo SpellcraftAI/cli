@@ -19,6 +19,7 @@ import { logoutCommand } from "./commands/logout";
 import { explainCommand } from "./commands/explain";
 import { updateCommand } from "./commands/update";
 import { getPackageJsonValue } from "./packageJson";
+import { authorizeCommand } from "./commands/authorize";
 
 const VERSION = await getPackageJsonValue("version");
 if (!VERSION) {
@@ -61,8 +62,13 @@ program
   .action(withErrorFormatting(logoutCommand));
 
 program
+  .command("authorize")
+  .description("Create a new authorization code to log in via SSH.\n\n")
+  .action(withErrorFormatting(authorizeCommand));
+
+program
   .command("update")
-  .description("Update the CLI to the latest version.\n\n")
+  .description("Update the CLI to the latest version.")
   .action(withErrorFormatting(updateCommand));
 
 program
@@ -108,7 +114,7 @@ Command.prototype.helpInformation = function () {
 /**
  * Warn if a user is trying to access non-auth commands without being logged in.
  */
-const whitelist = ["help", "--help", "login", "logout", "update"];
+const whitelist = ["help", "--help", "login", "logout", "authorize", "version", "update"];
 if (
   env.NODE_ENV !== "test" &&
   !whitelist.includes(process.argv.slice(2)[0])
