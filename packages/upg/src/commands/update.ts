@@ -1,8 +1,7 @@
 import which from "which";
 import { createShell } from "await-shell";
 
-import { log, success } from "../utils/log";
-import { chalk } from "../globs/shared";
+import { log, success } from "@tsmodule/log";
 
 export const updateCommand = async () => {
   const yarnPath = which.sync("yarn", { nothrow: true });
@@ -21,19 +20,19 @@ export const updateCommand = async () => {
 
   if (upgPath.includes("yarn")) {
     if (npmPath) {
-      log(chalk.bold("upg installed via Yarn. Ensuring no NPM copy."));
+      log("upg installed via Yarn. Ensuring no NPM copy.", ["bold"]);
       await shell.run("npm uninstall -g @gptlabs/upg");
     }
 
-    log(chalk.bold("Updating upg via Yarn."));
+    log("Updating upg via Yarn.", ["bold"]);
     await shell.run("yarn global add @gptlabs/upg");
   } else {
     if (yarnPath) {
-      log(chalk.bold("upg installed via NPM. Ensuring no Yarn copy."));
+      log("upg installed via NPM. Ensuring no Yarn copy.", ["bold"]);
       await shell.run("yarn global remove @gptlabs/upg");
     }
 
-    log(chalk.bold("Updating upg via NPM."));
+    log("Updating upg via NPM.", ["bold"]);
     await shell.run("npm update -g @gptlabs/upg");
   }
 

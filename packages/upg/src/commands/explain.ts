@@ -3,7 +3,7 @@ import editor from "tiny-cli-editor";
 import prompts from "prompts";
 import { explain } from "../actions/explain";
 import { loop } from "../state";
-import { log } from "../utils/log";
+import { log } from "@tsmodule/log";
 
 export const explainCommand = async () => {
   const code: string = await new Promise((resolve, reject) => {

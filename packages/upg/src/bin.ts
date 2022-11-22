@@ -5,11 +5,11 @@ import { readFile } from "fs/promises";
 import { env } from "process";
 import { oraPromise } from "ora";
 
-import { chalk, SUBSCRIPTION_LOCK } from "./globs/shared";
+import { SUBSCRIPTION_LOCK } from "./globs/shared";
 import { AUTH0_CLIENT } from "./globs/node";
 
 import { withErrorFormatting } from "./utils/errorFormatting";
-import { error, log, success } from "./utils/log";
+import { error, log, style, success } from "@tsmodule/log";
 import { checkSubscription } from "./utils/checkSubscription";
 
 import { loadCommand } from "./commands/load";
@@ -69,7 +69,7 @@ program
   .command("version")
   .description("Check the current version of UPG.")
   .action(() => {
-    log(`UPG version: ${chalk.underline(VERSION)}.`);
+    log(`UPG version: ${style(VERSION, ["underline"])}.`);
   });
 
 /**
@@ -82,7 +82,8 @@ const logo = await readFile(logoFile, "utf8");
 const taglines = await readFile(taglinesFile, "utf8").then((data) => data.split("\n"));
 
 if (env.NODE_ENV !== "test") {
-  log(chalk.dim(
+  log();
+  log(
     logo
       .replace(
         "Not competent enough to render a tagline!",
@@ -91,8 +92,9 @@ if (env.NODE_ENV !== "test") {
       .replace(
         "(A version number goes here)",
         VERSION
-      )
-  ));
+      ),
+    ["dim"]
+  );
 }
 
 /**
@@ -114,10 +116,12 @@ if (
   const user = await AUTH0_CLIENT.getUser();
   if (!user) {
     error(
-      chalk.dim("You are logged out."),
-      "Run \"upg login\" to log in."
+      "You are logged out.",
+      ["dim"],
+      { newlines: 0 }
     );
 
+    error("Run \"upg login\" to log in.");
     process.exit(1);
   }
 
@@ -129,9 +133,11 @@ if (
       withErrorFormatting(checkSubscription),
       {
         text: "Checking subscription...\n",
-        indent: 4,
+        indent: 2,
       }
     );
+
+    log();
   }
 }
 

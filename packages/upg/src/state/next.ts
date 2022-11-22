@@ -9,8 +9,8 @@ import { save } from "../actions/save";
 import { newProgram } from "../actions/new";
 import { explain } from "../actions/explain";
 
-import { success } from "../utils/log";
 import { displayProgram } from "../utils/displayProgram";
+import { success } from "@tsmodule/log";
 
 export const nextState = async (current: State): Promise<NextState> => {
   let next: State | null = null;

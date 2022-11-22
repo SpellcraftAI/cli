@@ -4,8 +4,8 @@ import { existsSync } from "fs";
 import { mkdir, writeFile } from "fs/promises";
 import { dirname } from "path";
 
-import { success } from "../utils/log";
 import { NullableAction } from "./types";
+import { success } from "@tsmodule/log";
 
 export const save: NullableAction = async (state) => {
   if (!state || !state.code) {

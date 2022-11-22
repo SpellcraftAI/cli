@@ -1,9 +1,9 @@
 import { State } from "./types";
 
-import { chalk } from "../globs/shared";
-import { error, log } from "../utils/log";
+// import { error, log } from "../utils/log";
 import { displayProgram } from "../utils/displayProgram";
 import { nextState } from "./next";
+import { error, log, style } from "@tsmodule/log";
 
 export const loop = async (
   initialState: State,
@@ -19,7 +19,7 @@ export const loop = async (
     }
 
     if (current.explanation) {
-      log(chalk.dim(chalk.bold("Explanation")), current.explanation);
+      log(`${style("Explanation", ["dim", "bold"])}\n${current.explanation}`);
     }
 
     displayProgram(current);
