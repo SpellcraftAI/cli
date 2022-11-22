@@ -362,10 +362,10 @@ arrify@^3.0.0:
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-3.0.0.tgz#ccdefb8eaf2a1d2ab0da1ca2ce53118759fd46bc"
   integrity sha512-tLkvA81vQG/XqE2mjDkGQHoOINtMHtysSnemrmoGe6PydDPMRbVugqyk4A6V/WDWEfm3l+0d8anA9r8cv/5Jaw==
 
-auth0-node-client@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/auth0-node-client/-/auth0-node-client-3.0.0.tgz#d0817d248816ab321680f2199b958451fd60d7a0"
-  integrity sha512-zFDXAjOgmpFMASew4Xd2mu6K6H01HP8pZYKCAYxUYU/LW3p4ibb6BvA5KxB3CPDNo5mMGihRv5KolrupkhZRxw==
+auth0-node-client@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/auth0-node-client/-/auth0-node-client-3.0.2.tgz#ed68b4fce260a158cdcddaeedd945174f6b90336"
+  integrity sha512-9ZE3cGH/dkAeZjIpnKNKjHGJvhxn/ckxnSLMFLHHqpVGPKDtMUxe+h/5RnMivyw2rV8XwQN4A/UepCbLkineMg==
   dependencies:
     "@tsmodule/log" "^0.3.6"
     chalk "^5.1.2"

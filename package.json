@@ -24,7 +24,7 @@
     "@types/which": "^2.0.1",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
-    "auth0-node-client": "^3.0.0",
+    "auth0-node-client": "^3.0.2",
     "ava": "^5.0.1",
     "await-shell": "^34.1.1",
     "cli-highlight": "^2.1.11",
