@@ -31,8 +31,18 @@
     "pretest": "yarn build && npm link -f",
     "test": "cross-env NODE_ENV=test concurrently -k -s first \"yarn ava\" \"yarn dev-web\"",
     "update-tests": "cross-env NODE_ENV=test concurrently -k -s first \"yarn ava -u\" \"yarn dev-web\"",
-    "prerelease": "release-it major --preRelease=canary --github.release --ci -VV",
+    "prerelease": "release-it major --preRelease=canary --ci -VV",
     "prepublishOnly": "yarn build"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "release: v${version}",
+      "tagAnnotation": "v${version}"
+    },
+    "github": {
+      "release": true,
+      "releaseName": "v${version}"
+    }
   },
   "repository": {
     "type": "git",
