@@ -119,7 +119,9 @@ export const run: Action = async (state) => {
   const logCommand = exitCode === 0 ? success : error;
   logCommand(
     style(`${command} exited with code ${exitCode}.`, ["dim"]) + "\n" +
-    `Execution time: ${duration.toFixed(2)}ms`
+    `Execution time: ${duration.toFixed(2)}ms`,
+    [],
+    { newlines: 0 }
   );
 
   /**

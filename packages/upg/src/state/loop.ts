@@ -20,7 +20,7 @@ export const loop = async (
 
     if (current.explanation) {
       log();
-      log(`${style("Explanation", ["dim", "bold"])}\n${current.explanation}`);
+      log(`${style("Explanation", ["dim", "bold"])}\n${current.explanation}`, [], { newlines: 0 });
     }
 
     displayProgram(current);
