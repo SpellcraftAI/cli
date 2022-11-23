@@ -39,7 +39,12 @@ export const displayProgram = (
                 .split("\n")
                 .map(
                   (line) => part.removed
-                    ? style(line, ["dim", "bgRed"]) || ""
+                    ? style(line, ["dim", "redBright"]) || ""
+                    : line
+                )
+                .map(
+                  (line) => part.added
+                    ? style(line, ["bold"]) || ""
                     : line
                 )
                 .map(
