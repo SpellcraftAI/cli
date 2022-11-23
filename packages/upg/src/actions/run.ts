@@ -2,14 +2,13 @@ import prompts from "prompts";
 
 import { performance } from "perf_hooks";
 
-import { createShell } from "await-shell";
+import { createShell } from "universal-shell";
 import { rm, writeFile } from "fs/promises";
 import { tmpdir } from "os";
 import { resolve } from "path";
 
-import { chalk } from "../globs/shared";
-import { error, log, success } from "../utils/log";
 import { Action } from "./types";
+import { style, log, error, success } from "@tsmodule/log";
 
 export const EXECUTION_COMMANDS = {
   bash: "bash",
@@ -104,9 +103,9 @@ export const run: Action = async (state) => {
   }
 
   log(
-    chalk.dim("-".repeat(30)),
-    chalk.dim(chalk.bold("Output")),
-    chalk.dim("-".repeat(30)),
+    style("-".repeat(30), ["dim"]) + "\n" +
+    style("Output", ["bold", "dim"]) + "\n" +
+    style("-".repeat(30), ["dim"])
   );
 
   const startTime = performance.now();
@@ -114,11 +113,12 @@ export const run: Action = async (state) => {
   const endTime = performance.now();
   const duration = endTime - startTime;
 
-  log(chalk.dim("-".repeat(30)));
+  log();
+  log("-".repeat(30), ["dim"]);
 
   const logCommand = exitCode === 0 ? success : error;
   logCommand(
-    chalk.dim(`${command} exited with code ${exitCode}.`),
+    style(`${command} exited with code ${exitCode}.`, ["dim"]) + "\n" +
     `Execution time: ${duration.toFixed(2)}ms`
   );
 

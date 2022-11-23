@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { chalk } from "../globs/shared";
-import { error, errorLog } from "./log";
+import { error, style } from "@tsmodule/log";
 
 /* eslint-disable no-console */
 export const withErrorFormatting = (fn: (...args: any[]) => any) => {
@@ -14,10 +13,13 @@ export const withErrorFormatting = (fn: (...args: any[]) => any) => {
           : JSON.stringify(e);
 
       if (errorMessage === "Request failed with status code 503") {
-        error("Issue with OpenAI API. Please see the status page at:", "https://status.openai.com/");
+        error(
+          "Issue with OpenAI API. Please see the status page at:\n" +
+          "https://status.openai.com/"
+        );
       }
 
-      errorLog(`${chalk.red("ERROR:")} ${errorMessage}`);
+      error(`${style("ERROR:", ["bold"])} ${errorMessage}`);
       process.exit(1);
     }
   };

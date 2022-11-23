@@ -5,11 +5,11 @@ import { readFile } from "fs/promises";
 import { env } from "process";
 import { oraPromise } from "ora";
 
-import { chalk, SUBSCRIPTION_LOCK } from "./globs/shared";
+import { SUBSCRIPTION_LOCK } from "./globs/shared";
 import { AUTH0_CLIENT } from "./globs/node";
 
 import { withErrorFormatting } from "./utils/errorFormatting";
-import { error, log, success } from "./utils/log";
+import { error, log, style, success } from "@tsmodule/log";
 import { checkSubscription } from "./utils/checkSubscription";
 
 import { loadCommand } from "./commands/load";
@@ -19,6 +19,7 @@ import { logoutCommand } from "./commands/logout";
 import { explainCommand } from "./commands/explain";
 import { updateCommand } from "./commands/update";
 import { getPackageJsonValue } from "./packageJson";
+import { authorizeCommand } from "./commands/authorize";
 
 const VERSION = await getPackageJsonValue("version");
 if (!VERSION) {
@@ -61,15 +62,20 @@ program
   .action(withErrorFormatting(logoutCommand));
 
 program
+  .command("authorize")
+  .description("Create a new authorization code to log in via SSH.\n\n")
+  .action(withErrorFormatting(authorizeCommand));
+
+program
   .command("update")
-  .description("Update the CLI to the latest version.\n\n")
+  .description("Update the CLI to the latest version.")
   .action(withErrorFormatting(updateCommand));
 
 program
   .command("version")
   .description("Check the current version of UPG.")
   .action(() => {
-    log(`UPG version: ${chalk.underline(VERSION)}.`);
+    log(`UPG version: ${style(VERSION, ["underline"])}.`);
   });
 
 /**
@@ -82,7 +88,7 @@ const logo = await readFile(logoFile, "utf8");
 const taglines = await readFile(taglinesFile, "utf8").then((data) => data.split("\n"));
 
 if (env.NODE_ENV !== "test") {
-  log(chalk.dim(
+  log(
     logo
       .replace(
         "Not competent enough to render a tagline!",
@@ -91,8 +97,9 @@ if (env.NODE_ENV !== "test") {
       .replace(
         "(A version number goes here)",
         VERSION
-      )
-  ));
+      ),
+    ["dim"]
+  );
 }
 
 /**
@@ -106,7 +113,7 @@ Command.prototype.helpInformation = function () {
 /**
  * Warn if a user is trying to access non-auth commands without being logged in.
  */
-const whitelist = ["help", "--help", "login", "logout", "update"];
+const whitelist = ["help", "--help", "login", "logout", "authorize", "version", "update"];
 if (
   env.NODE_ENV !== "test" &&
   !whitelist.includes(process.argv.slice(2)[0])
@@ -114,10 +121,12 @@ if (
   const user = await AUTH0_CLIENT.getUser();
   if (!user) {
     error(
-      chalk.dim("You are logged out."),
-      "Run \"upg login\" to log in."
+      "You are logged out.",
+      ["dim"],
+      { newlines: 0 }
     );
 
+    error("Run \"upg login\" to log in.");
     process.exit(1);
   }
 
@@ -129,7 +138,7 @@ if (
       withErrorFormatting(checkSubscription),
       {
         text: "Checking subscription...\n",
-        indent: 4,
+        indent: 2,
       }
     );
   }

@@ -1,6 +1,5 @@
 import { platform } from "os";
 import { env } from "process";
-import { Chalk } from "chalk";
 import { highlight as highlightRaw } from "cli-highlight";
 
 export const SUBSCRIPTION_LOCK = true;
@@ -14,11 +13,6 @@ export const DEVELOPMENT = (
 
 export const TESTING = env.NODE_ENV === "test";
 export const PRODUCTION = !DEVELOPMENT;
-
-/**
- * Override Chalk color support if we're testing.
- */
-export const chalk = new Chalk({ level: TESTING ? 0 : 3 });
 
 export const highlight = (code: string, language: string) => {
   if (TESTING) {

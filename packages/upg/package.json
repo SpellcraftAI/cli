@@ -15,19 +15,18 @@
     "upg": "dist/bin.js"
   },
   "files": [
-    "dist/bin.js",
-    "dist/*.html",
-    "dist/*.txt"
+    "dist/**/*.js",
+    "dist/**/*.txt"
   ],
   "exports": {
     "./package.json": "./package.json",
-    ".": "./dist/index.js",
+    ".": "./dist/bin.js",
     "./*": "./dist/*/index.js"
   },
   "scripts": {
     "dev-web": "yarn --cwd ../../../api dev",
     "dev": "tsmodule dev",
-    "build": "tsmodule build -b",
+    "build": "tsmodule build --standalone \"src/{bin.ts,header.txt,taglines.txt}\"",
     "lint": "eslint --fix",
     "pretest": "yarn build && npm link -f",
     "test": "cross-env NODE_ENV=test concurrently -k -s first \"yarn ava\" \"yarn dev-web\"",
