@@ -6,7 +6,7 @@
     "GPT-3",
     "GPT Labs"
   ],
-  "version": "0.1.11-canary.2",
+  "version": "0.1.12-canary.0",
   "license": "MIT",
   "type": "module",
   "platform": "node",
@@ -31,7 +31,7 @@
     "pretest": "yarn build && npm link -f",
     "test": "cross-env NODE_ENV=test concurrently -k -s first \"yarn ava\" \"yarn dev-web\"",
     "update-tests": "cross-env NODE_ENV=test concurrently -k -s first \"yarn ava -u\" \"yarn dev-web\"",
-    "release": "release-it minor --ci -VV",
+    "release": "release-it --ci -VV",
     "canary": "release-it --preRelease=canary --ci -VV",
     "prepublishOnly": "yarn build"
   },
