@@ -31,7 +31,8 @@
     "pretest": "yarn build && npm link -f",
     "test": "cross-env NODE_ENV=test concurrently -k -s first \"yarn ava\" \"yarn dev-web\"",
     "update-tests": "cross-env NODE_ENV=test concurrently -k -s first \"yarn ava -u\" \"yarn dev-web\"",
-    "prepublishOnly": "yarn test"
+    "prerelease": "release-it major --preRelease=canary --github --ci -VV",
+    "prepublishOnly": "yarn build"
   },
   "repository": {
     "type": "git",
