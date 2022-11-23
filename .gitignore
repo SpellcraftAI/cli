@@ -11,3 +11,8 @@ dist/
 
 # Incremental TS build info.
 *.tsbuildinfo
+
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+.pnp.*

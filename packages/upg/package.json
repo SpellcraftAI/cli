@@ -11,9 +11,7 @@
   "type": "module",
   "platform": "node",
   "types": "dist/index.d.ts",
-  "bin": {
-    "upg": "dist/bin.js"
-  },
+  "bin": "dist/bin.js",
   "files": [
     "dist/**/*.js",
     "dist/**/*.txt"
@@ -31,7 +29,7 @@
     "pretest": "yarn build && npm link -f",
     "test": "cross-env NODE_ENV=test concurrently -k -s first \"yarn ava\" \"yarn dev-web\"",
     "update-tests": "cross-env NODE_ENV=test concurrently -k -s first \"yarn ava -u\" \"yarn dev-web\"",
-    "prepublishOnly": "yarn test"
+    "prerelease": "npx release-it major --preRelease=canary --ci -VV"
   },
   "repository": {
     "type": "git",
