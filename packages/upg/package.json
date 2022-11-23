@@ -6,7 +6,7 @@
     "GPT-3",
     "GPT Labs"
   ],
-  "version": "4.0.0-canary.0",
+  "version": "0.1.11-canary.0",
   "license": "MIT",
   "type": "module",
   "platform": "node",
@@ -31,14 +31,24 @@
     "pretest": "yarn build && npm link -f",
     "test": "cross-env NODE_ENV=test concurrently -k -s first \"yarn ava\" \"yarn dev-web\"",
     "update-tests": "cross-env NODE_ENV=test concurrently -k -s first \"yarn ava -u\" \"yarn dev-web\"",
-    "prerelease": "release-it major --preRelease=canary --github --ci -VV",
+    "prerelease": "release-it --preRelease=canary --ci -VV",
     "prepublishOnly": "yarn build"
+  },
+  "dependencies": {
+    "clipboardy": "^3.0.0"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "release: ${version}",
+      "tagAnnotation": "${version}"
+    },
+    "github": {
+      "release": true,
+      "releaseName": "${version}"
+    }
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/gptlabs/tools.git"
-  },
-  "dependencies": {
-    "clipboardy": "^3.0.0"
   }
 }
