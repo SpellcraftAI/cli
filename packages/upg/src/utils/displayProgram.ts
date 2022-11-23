@@ -30,18 +30,20 @@ export const displayProgram = (
                 : part.removed
                   ? style("  -  ", ["red"])
                   : "     ",
-              ["bold"]
+              ["bold", "dim"]
             );
 
             const withAddedSigns =
               part
                 .value
                 .split("\n")
-                .map((line) => `${plusOrMinus}${!part.removed ? highlight(line, target) : line}`)
                 .map(
                   (line) => part.removed
-                    ? style(line, ["dim", "red"])
+                    ? style(line, ["dim", "bgRed"]) || ""
                     : line
+                )
+                .map(
+                  (line) => `${plusOrMinus}${!part.removed ? highlight(line, target) : line}`
                 )
                 .join("\n");
 
@@ -76,7 +78,6 @@ export const displayProgram = (
     console.log(`   ${style("Iteration", ["dim"])} ${iteration}`);
   }
 
-  console.log();
   console.log(diff ? codeText : withLineNumbers);
   console.log();
   console.log();

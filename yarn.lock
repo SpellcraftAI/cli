@@ -238,10 +238,10 @@
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-1.1.2.tgz#ccb91445360179a04e7fe6aff78c00ffc1eeaf82"
   integrity sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==
 
-"@tsmodule/log@^1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@tsmodule/log/-/log-1.1.3.tgz#36fffe297ba7d8ed5710070807c45689ba9cce34"
-  integrity sha512-mPCOk9zoff8pxLDHwCTx8c8SrylviRwfeF4OXni73zmxDs/R7N29ES7ht2Ie45rHwOvpcc4SH2TpUs55yAa8ng==
+"@tsmodule/log@^1.1.5":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@tsmodule/log/-/log-1.1.5.tgz#714e542ae909cdf0ffc310b04ce172f43a94db42"
+  integrity sha512-Li6SFr7DPAJtn5C2LuLvpcX5fmBHRk0dCHXOjlxgvzXQqh6oynKVIzReehuhYxcLuZyuFX6USgK8Ftby3v7fuw==
 
 "@tsmodule/test@^1.2.1":
   version "1.2.1"
