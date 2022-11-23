@@ -1,9 +1,9 @@
-name: Canary Release
+name: Production Release
 
 on:
   push:
     branches:
-      - 'canary'
+      - 'master'
 
 jobs:
   Release:
@@ -36,6 +36,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.OVERRIDE_GITHUB_TOKEN }}
 
     - name: Test Production Bundle & Release
-      run: cd packages/upg && npm run prerelease
+      run: cd packages/upg && npm run release
       env:
         GITHUB_TOKEN: ${{ secrets.OVERRIDE_GITHUB_TOKEN }}
