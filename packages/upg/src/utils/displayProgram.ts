@@ -77,6 +77,7 @@ export const displayProgram = (
    */
 
   console.log();
+  console.log();
   console.group();
   if (iteration) {
     console.log();
