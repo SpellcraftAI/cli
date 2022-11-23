@@ -29,7 +29,7 @@
     "pretest": "yarn build && npm link -f",
     "test": "cross-env NODE_ENV=test concurrently -k -s first \"yarn ava\" \"yarn dev-web\"",
     "update-tests": "cross-env NODE_ENV=test concurrently -k -s first \"yarn ava -u\" \"yarn dev-web\"",
-    "prerelease": "npx release-it major --preRelease=canary --ci -VV"
+    "prerelease": "yarn build && npx release-it major --preRelease=canary --ci -VV"
   },
   "repository": {
     "type": "git",

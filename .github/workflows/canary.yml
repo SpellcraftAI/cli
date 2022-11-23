@@ -36,6 +36,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.OVERRIDE_GITHUB_TOKEN }}
 
     - name: Test Production Bundle & Release
-      run: yarn workspaces foreach exec "npx release-it major --preRelease=canary --ci -VV --dry-run"
+      run: yarn workspaces foreach run prerelease
       env:
         GITHUB_TOKEN: ${{ secrets.OVERRIDE_GITHUB_TOKEN }}
