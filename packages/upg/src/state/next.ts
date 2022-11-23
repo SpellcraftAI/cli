@@ -10,7 +10,7 @@ import { newProgram } from "../actions/new";
 import { explain } from "../actions/explain";
 
 import { displayProgram } from "../utils/displayProgram";
-import { success } from "@tsmodule/log";
+import { log, success } from "@tsmodule/log";
 
 export const nextState = async (current: State): Promise<NextState> => {
   let next: State | null = null;
@@ -136,6 +136,7 @@ export const nextState = async (current: State): Promise<NextState> => {
       }
 
       await clipboard.write(current.code);
+      log();
       success("Copied.");
       break;
 
@@ -144,6 +145,7 @@ export const nextState = async (current: State): Promise<NextState> => {
       break;
 
     case "undo":
+      log();
       success("Reverting.");
       undo = true;
       break;
