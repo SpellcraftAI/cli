@@ -5,7 +5,7 @@ import { readFile } from "fs/promises";
 import { env } from "process";
 import { oraPromise } from "ora";
 
-import { SUBSCRIPTION_LOCK } from "./globs/shared";
+import { SUBSCRIPTION_LOCK, VERSION } from "./globs/shared";
 import { AUTH0_CLIENT } from "./globs/node";
 
 import { withErrorFormatting } from "./utils/errorFormatting";
@@ -18,13 +18,7 @@ import { loginCommand } from "./commands/login";
 import { logoutCommand } from "./commands/logout";
 import { explainCommand } from "./commands/explain";
 import { updateCommand } from "./commands/update";
-import { getPackageJsonValue } from "./packageJson";
 import { authorizeCommand } from "./commands/authorize";
-
-const VERSION = await getPackageJsonValue("version");
-if (!VERSION) {
-  throw new Error("Failed to get version. Please report this: https://twitter.com/gptlabs");
-}
 
 program
   .name("upg")
@@ -141,6 +135,8 @@ if (
         indent: 2,
       }
     );
+
+    log();
   }
 }
 

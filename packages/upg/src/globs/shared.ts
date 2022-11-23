@@ -1,8 +1,16 @@
 import { platform } from "os";
 import { env } from "process";
 import { highlight as highlightRaw } from "cli-highlight";
+import { getPackageJson } from "../packageJson";
 
 export const SUBSCRIPTION_LOCK = true;
+
+export const PACKAGE_JSON = await getPackageJson();
+if (!PACKAGE_JSON) {
+  throw new Error("Failed to get package.json. Please report this: https://twitter.com/gptlabs");
+}
+
+export const { version: VERSION } = PACKAGE_JSON;
 
 export const DEVELOPMENT = (
   /** Inlined by compiler. */
