@@ -41,7 +41,8 @@ program
 program
   .command("explain")
   .description("Explain a program by pasting it or loading from file.\n\n")
-  // .option("-f, --file [file]", "The file to explain.")
+  .option("-n, --non-interactive", "Run without interactivity.")
+  .argument("[file]", "The file to explain.")
   .action(withErrorFormatting(explainCommand));
 
 
