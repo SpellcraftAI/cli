@@ -3,7 +3,8 @@
 import { Command, program } from "commander";
 import { readFile } from "fs/promises";
 import { env } from "process";
-import { spinners } from "@tsmodule/spinners";
+import { oraPromise } from "ora";
+// import { spinners } from "@tsmodule/spinners";
 
 import { SUBSCRIPTION_LOCK, VERSION } from "./globs/shared";
 import { AUTH0_CLIENT } from "./globs/node";
@@ -129,11 +130,17 @@ if (
   success("Logged in.");
 
   if (SUBSCRIPTION_LOCK) {
-    await spinners({
-      "Checking subscription...": async () => {
-        await withErrorFormatting(checkSubscription)();
-      }
+    log();
+    await oraPromise(checkSubscription, {
+      text: "Checking subscription...",
+      indent: 2,
     });
+    log();
+    // await spinners({
+    //   "Checking subscription...": async () => {
+    //     await withErrorFormatting(checkSubscription)();
+    //   }
+    // });
   }
 }
 
