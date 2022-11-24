@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { error, log, style } from "@tsmodule/log";
+import { error, style } from "@tsmodule/log";
 
 /* eslint-disable no-console */
 export const withErrorFormatting = (fn: (...args: any[]) => any) => {
@@ -19,7 +19,6 @@ export const withErrorFormatting = (fn: (...args: any[]) => any) => {
         );
       }
 
-      log();
       error(`${style("ERROR:", ["bold"])} ${errorMessage}`);
       process.exit(1);
     }

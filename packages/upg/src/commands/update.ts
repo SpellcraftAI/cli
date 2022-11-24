@@ -44,6 +44,5 @@ export const updateCommand = async () => {
     await shell.run(`npm update -g ${packageName}`);
   }
 
-  log();
   success("Updated successfully.");
 };

@@ -238,15 +238,20 @@
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-1.1.2.tgz#ccb91445360179a04e7fe6aff78c00ffc1eeaf82"
   integrity sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==
 
-"@tsmodule/log@^1.1.5":
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/@tsmodule/log/-/log-1.1.5.tgz#714e542ae909cdf0ffc310b04ce172f43a94db42"
-  integrity sha512-Li6SFr7DPAJtn5C2LuLvpcX5fmBHRk0dCHXOjlxgvzXQqh6oynKVIzReehuhYxcLuZyuFX6USgK8Ftby3v7fuw==
+"@tsmodule/log@^1.4.4":
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/@tsmodule/log/-/log-1.4.4.tgz#9273bbbb6eef17ef67b658227b0e8e6a00342cb0"
+  integrity sha512-Voq6UB92Z63L3QuhFOjjlmLErE7gbuNHi9i8ayDpOOfPQnkrDdp1cg29w+GpGC94mG+nvnO45req+dAqEKlyuQ==
 
-"@tsmodule/test@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@tsmodule/test/-/test-1.2.1.tgz#2a8536d2060f5a49287f45cc1ae42d25b84e3b9c"
-  integrity sha512-3PJn8ZpGmL2EvQQVzHIRvG+mhfVKizpbkWSv8FDW8ruCPhYz52emDftuEp9/e0FnO2KvZDKcpXBktYVFqhASRw==
+"@tsmodule/spinners@^0.5.3":
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/@tsmodule/spinners/-/spinners-0.5.3.tgz#a21fbe22628b38e412463860b5bd05721e3364b3"
+  integrity sha512-+vWahDau/yJ5Hn6aKwyD1mTbwnoIY4h87Y8O29/ihCfBJcQiyw2IC1sVqfumtVGrFLcG57bXa3jK5Qy43bS8jg==
+
+"@tsmodule/test@^1.2.5":
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/@tsmodule/test/-/test-1.2.5.tgz#d8c19725985b9312784aa5ed812c256e270eb9aa"
+  integrity sha512-aCyPINI1YORnFLkKTdm/UwysbOa8EkfrrofUr4IFlBl0VOfQp1WIg7XAvU4HOWoEw9ILs/yROtpZfxuhTBKcqw==
 
 "@tsmodule/tsmodule@^41.11.0":
   version "41.11.0"
@@ -559,12 +564,12 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
 
-auth0-node-client@^3.1.1:
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/auth0-node-client/-/auth0-node-client-3.1.1.tgz#99ca2543d841c00737cdbba6dc7536ed86c96779"
-  integrity sha512-fVpRoHiPJtd18XU8DYTmqP0ku7du1CGxCKbSt2MY+T9nrcyWBvyu/psBT7QcW7KY/FpzVxXkNjwSpFaOT6yJTw==
+auth0-node-client@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/auth0-node-client/-/auth0-node-client-3.1.2.tgz#1eb152607b81df18b8bbbe8af6c0fee24c36cac1"
+  integrity sha512-irD3vQ06zt+rDImeddtK2IMn9/8knRPjJhmK4Cxyv48RQ/0GdxrdVQrB8RrURrjWj9txyfbM+/vGZe8qgDVTUA==
 
-ava@^5.0.1:
+ava@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/ava/-/ava-5.1.0.tgz#98c4aac86a427c9843d3af13f25552b71014bff7"
   integrity sha512-e5VFrSQ0WBPyZJWRXVrO7RFOizFeNM0t2PORwrPvWtApgkORI6cvGnY3GX1G+lzpd0HjqNx5Jus22AhxVnUMNA==

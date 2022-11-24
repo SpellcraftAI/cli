@@ -3,7 +3,7 @@
 import { Command, program } from "commander";
 import { readFile } from "fs/promises";
 import { env } from "process";
-import { oraPromise } from "ora";
+import { spinners } from "@tsmodule/spinners";
 
 import { SUBSCRIPTION_LOCK, VERSION } from "./globs/shared";
 import { AUTH0_CLIENT } from "./globs/node";
@@ -92,7 +92,8 @@ if (env.NODE_ENV !== "test") {
         "(A version number goes here)",
         VERSION
       ),
-    ["dim"]
+    ["dim"],
+    { postLines: 1 }
   );
 }
 
@@ -116,8 +117,8 @@ if (
   if (!user) {
     error(
       "You are logged out.",
-      ["dim"],
-      { newlines: 0 }
+      ["dim", "redBright"],
+      { postLines: 0 }
     );
 
     error("Run \"upg login\" to log in.");
@@ -128,15 +129,11 @@ if (
   success("Logged in.");
 
   if (SUBSCRIPTION_LOCK) {
-    await oraPromise(
-      withErrorFormatting(checkSubscription),
-      {
-        text: "Checking subscription...\n",
-        indent: 2,
+    await spinners({
+      "Checking subscription...": async () => {
+        await withErrorFormatting(checkSubscription)();
       }
-    );
-
-    log();
+    });
   }
 }
 

@@ -5,7 +5,7 @@ import prompts from "prompts";
 import { diffLines } from "diff";
 import { NullableAction } from "./types";
 import { AUTH0_CLIENT } from "../globs/node";
-import { error, log, success } from "@tsmodule/log";
+import { error, success } from "@tsmodule/log";
 
 export const edit: NullableAction<{ instruction?: string }> =
 async (state, { instruction } = {}) => {
@@ -45,7 +45,6 @@ async (state, { instruction } = {}) => {
   const editedCode = response.code.trim();
   const diff = diffLines(code, editedCode);
 
-  log();
   success("Edited.");
   return {
     ...state,

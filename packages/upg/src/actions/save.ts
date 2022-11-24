@@ -5,7 +5,7 @@ import { mkdir, writeFile } from "fs/promises";
 import { dirname } from "path";
 
 import { NullableAction } from "./types";
-import { log, success } from "@tsmodule/log";
+import { success } from "@tsmodule/log";
 
 export const save: NullableAction = async (state) => {
   if (!state || !state.code) {
@@ -35,7 +35,6 @@ export const save: NullableAction = async (state) => {
 
   await writeFile(file, code);
 
-  log();
   success(`Saved file to ${file}.`);
   return null;
 };

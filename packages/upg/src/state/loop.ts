@@ -3,7 +3,7 @@ import { State } from "./types";
 // import { error, log } from "../utils/log";
 import { displayProgram } from "../utils/displayProgram";
 import { nextState } from "./next";
-import { error, log, style } from "@tsmodule/log";
+import { error, log } from "@tsmodule/log";
 
 export const loop = async (
   initialState: State,
@@ -13,14 +13,16 @@ export const loop = async (
   let current: State;
 
   while (true) {
+    // clear();
+
     current = stack[stackIndex] || null;
     if (!current) {
       break;
     }
 
     if (current.explanation) {
-      log();
-      log(`${style("Explanation", ["dim", "bold"])}\n${current.explanation}`, [], { newlines: 0 });
+      log("Explanation", ["bold", "dim"]);
+      log(current.explanation, ["dim"], { preLines: 0 });
     }
 
     displayProgram(current);
