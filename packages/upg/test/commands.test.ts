@@ -7,10 +7,11 @@ import { sleep } from "./lib";
  */
 await sleep(1000);
 
+const shell = createShell();
+
 test.serial("zsh", async (t) => {
   if (process.env.CI) return t.pass();
 
-  const shell = createShell();
   const { stdout } = await shell.run(
     "upg -n zsh \"save the last year of stock ticker data for Google, Amazon, and Apple to CSVs from Yahoo Finance\""
   );
@@ -21,7 +22,6 @@ test.serial("zsh", async (t) => {
 test.serial("python", async (t) => {
   if (process.env.CI) return t.pass();
 
-  const shell = createShell();
   const { stdout } = await shell.run(
     "upg -n python \"load the ticker history from tickers.csv, calculate the cumulative returns of tickers by price_close over time, and plot using ggplot and pandas\""
   );
@@ -32,9 +32,18 @@ test.serial("python", async (t) => {
 test.serial("typescript", async (t) => {
   if (process.env.CI) return t.pass();
 
-  const shell = createShell();
   const { stdout } = await shell.run(
     "upg -n typescript \"define Y combinator function Y(f) and demo using console.log\""
+  );
+
+  t.snapshot(stdout);
+});
+
+test.serial("mandelbrot", async (t) => {
+  if (process.env.CI) return t.pass();
+
+  const { stdout } = await shell.run(
+    "upg -n python \"plot the Mandelbrot set\""
   );
 
   t.snapshot(stdout);
