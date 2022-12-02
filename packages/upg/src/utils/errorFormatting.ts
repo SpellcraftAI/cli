@@ -19,7 +19,7 @@ export const withErrorFormatting = (fn: (...args: any[]) => any) => {
         );
       }
 
-      error(`${style("ERROR:", ["bold"])} ${errorMessage}`);
+      error(`\n${style("ERROR:", ["bold"])} ${errorMessage}`);
       process.exit(1);
     }
   };
