@@ -17,40 +17,52 @@ export const updateCommand = async () => {
   const npmPath = which.sync("npm", { nothrow: true });
   const upgPath = which.sync("upg", { nothrow: true });
 
-  if (!yarnPath && !npmPath) {
-    throw new Error("Neither NPM nor Yarn found in PATH.");
-  }
+  let packageManager: "npm" | "yarn";
 
   if (!upgPath) {
     throw new Error("upg not found in PATH.");
   }
 
+  if (upgPath.includes("yarn")) {
+    packageManager = "yarn";
+  } else if (upgPath.includes("npm")) {
+    packageManager = "npm";
+  } else {
+    throw new Error("Could not determine package manager.");
+  }
+
   const shell = createShell();
 
-  if (upgPath.includes("yarn")) {
-    if (npmPath) {
-      log("upg installed via Yarn. Ensuring no NPM copy.", ["bold"]);
-      try {
-        await shell.run(`npm uninstall -g ${packageName}`);
-      } catch (e) {
-        DEBUG.log("No NPM copy found.");
+  switch (packageManager) {
+    case "yarn":
+      if (npmPath) {
+        log("upg installed via Yarn. Ensuring no NPM copy.", ["bold"]);
+        try {
+          await shell.run(`npm uninstall -g ${packageName}`);
+        } catch (e) {
+          DEBUG.log("No NPM copy found.");
+        }
       }
-    }
 
-    log("Updating upg via Yarn.", ["bold"]);
-    await shell.run(`yarn global add ${packageName}`);
-  } else {
-    if (yarnPath) {
-      log("upg installed via NPM. Ensuring no Yarn copy.", ["bold"]);
-      try {
-        await shell.run(`yarn global remove ${packageName}`);
-      } catch (e) {
-        DEBUG.log("No Yarn copy found.");
+      log("Updating upg via Yarn.", ["bold"]);
+      await shell.run(`yarn global add ${packageName}`);
+
+      break;
+
+    case "npm":
+      if (yarnPath) {
+        log("upg installed via NPM. Ensuring no Yarn copy.", ["bold"]);
+        try {
+          await shell.run(`yarn global remove ${packageName}`);
+        } catch (e) {
+          DEBUG.log("No Yarn copy found.");
+        }
       }
-    }
 
-    log("Updating upg via NPM.", ["bold"]);
-    await shell.run(`npm i -g ${packageName} --save`);
+      log("Updating upg via NPM.", ["bold"]);
+      await shell.run(`npm i -g ${packageName} --save`);
+
+      break;
   }
 
   success("Updated successfully.");
