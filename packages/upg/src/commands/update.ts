@@ -3,7 +3,7 @@ import { createShell } from "universal-shell";
 import { createDebugLogger } from "debug-logging";
 
 import { log, success } from "@tsmodule/log";
-import { CANARY, VERSION } from "../globs/shared";
+import { CANARY } from "../globs/shared";
 
 export const updateCommand = async () => {
   const DEBUG = createDebugLogger(updateCommand);

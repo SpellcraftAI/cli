@@ -22,7 +22,7 @@ export const loop = async (
 
     if (current.explanation) {
       log("Explanation", ["bold", "dim"]);
-      log(current.explanation, ["dim"], { preLines: 0 });
+      log(current.explanation, [], { preLines: 0 });
     }
 
     displayProgram(current);
