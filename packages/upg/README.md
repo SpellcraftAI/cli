@@ -193,14 +193,37 @@ The following explanation was generated:
 
       See the **Convert to other languages** section above .
 
-## Local development
+## Developing
 
-Run `npm install` at the mono-repo level, then run `npm install` in this package.
-
-After that, build the binary with `npm run build` and then run it with `node dist/bin.js` with whatever command-line arguments you want to test. You may have to login again.
+In the monorepo top-level directory `.`:
 
 ```shell
-node dist/bin.js login
-echo 'console.log("hello world")' > /tmp/hello.ts
-node dist/bin.js explain -n /tmp/hello.ts
+# install workspace dependencies
+yarn
+
+# enter UPG workspace
+cd packages/upg
+```
+
+You can start development mode and build the production bundle using:
+
+```shell
+# develop
+yarn dev
+
+# build
+yarn build
+```
+
+You can run the built program by executing `./dist/bin.js`, either manually or
+by using the linked Yarn binary (linked automatically by `yarn build`):
+
+```shell
+# using yarn
+yarn upg login
+yarn upg load file.ts
+
+# or
+./dist/bin.js login
+./dist/bin.js load file.ts
 ```
