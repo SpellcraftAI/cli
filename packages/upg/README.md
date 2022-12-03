@@ -191,4 +191,16 @@ The following explanation was generated:
       **Save** to get it out of the CLI and execute it manually, or load it with
       `upg load [new-file]` and then **Run**.
 
-      See the **Convert to other languages** section above.
+      See the **Convert to other languages** section above .
+
+## Local development
+
+Run `npm install` at the mono-repo level, then run `npm install` in this package.
+
+After that, build the binary with `npm run build` and then run it with `node dist/bin.js` with whatever command-line arguments you want to test. You may have to login again.
+
+```shell
+node dist/bin.js login
+echo 'console.log("hello world")' > /tmp/hello.ts
+node dist/bin.js explain -n /tmp/hello.ts
+```
