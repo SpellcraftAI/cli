@@ -564,10 +564,10 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
 
-auth0-node-client@^3.6.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/auth0-node-client/-/auth0-node-client-3.6.0.tgz#ceb5797b6603064695aa7945f070c357b354f64c"
-  integrity sha512-IOJy9BRvQhLJmlOWa0LpCMWnq/9HM2JILidUKjQBZzuxi1YuN4Z+51DsHCOBqwHCKlqOEKaVwFutSgBEmDVb7Q==
+auth0-node-client@^3.7.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/auth0-node-client/-/auth0-node-client-3.7.0.tgz#08f46ee11a6b2174f227c0192dea14dbe41fa0b7"
+  integrity sha512-uRHlvXHI5RU+M4CUU1e/qA3FyTNUtMUc6A288d8Uoq9KZmuXH+Ctu17/e5PzLGaQENoqp05hT7D0R4w0E5l/zw==
 
 ava@^5.1.0:
   version "5.1.0"
