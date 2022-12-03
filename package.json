@@ -32,6 +32,7 @@
     "commander": "^9.4.1",
     "concurrently": "^7.5.0",
     "cross-env": "^7.0.3",
+    "debug-logging": "^4.1.2",
     "diff": "^5.1.0",
     "eslint": "^8.26.0",
     "node-fetch": "^3.2.10",

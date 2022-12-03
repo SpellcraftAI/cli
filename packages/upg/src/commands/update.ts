@@ -1,10 +1,12 @@
 import which from "which";
 import { createShell } from "universal-shell";
+import { createDebugLogger } from "debug-logging";
 
 import { log, success } from "@tsmodule/log";
 import { VERSION } from "../globs/shared";
 
 export const updateCommand = async () => {
+  const DEBUG = createDebugLogger(updateCommand);
   const onCanary = VERSION.includes("canary");
   const packageName = onCanary ? "@gptlabs/upg@canary" : "@gptlabs/upg";
 
@@ -29,7 +31,11 @@ export const updateCommand = async () => {
   if (upgPath.includes("yarn")) {
     if (npmPath) {
       log("upg installed via Yarn. Ensuring no NPM copy.", ["bold"]);
-      await shell.run(`npm uninstall -g ${packageName}`);
+      try {
+        await shell.run(`npm uninstall -g ${packageName}`);
+      } catch (e) {
+        DEBUG.log("No NPM copy found.");
+      }
     }
 
     log("Updating upg via Yarn.", ["bold"]);
@@ -37,7 +43,11 @@ export const updateCommand = async () => {
   } else {
     if (yarnPath) {
       log("upg installed via NPM. Ensuring no Yarn copy.", ["bold"]);
-      await shell.run(`yarn global remove ${packageName}`);
+      try {
+        await shell.run(`yarn global remove ${packageName}`);
+      } catch (e) {
+        DEBUG.log("No Yarn copy found.");
+      }
     }
 
     log("Updating upg via NPM.", ["bold"]);
