@@ -3,14 +3,13 @@ import { createShell } from "universal-shell";
 import { createDebugLogger } from "debug-logging";
 
 import { log, success } from "@tsmodule/log";
-import { VERSION } from "../globs/shared";
+import { CANARY, VERSION } from "../globs/shared";
 
 export const updateCommand = async () => {
   const DEBUG = createDebugLogger(updateCommand);
-  const onCanary = VERSION.includes("canary");
-  const packageName = onCanary ? "@gptlabs/upg@canary" : "@gptlabs/upg";
+  const packageName = CANARY ? "@gptlabs/upg@canary" : "@gptlabs/upg";
 
-  if (onCanary) {
+  if (CANARY) {
     log("Installing canary version.");
   }
 
