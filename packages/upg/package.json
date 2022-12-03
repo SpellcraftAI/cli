@@ -7,7 +7,7 @@
     "GPT Labs"
   ],
   "version": "0.1.12-canary.17",
-  "license": "See license in LICENSE",
+  "license": "SEE LICENSE IN LICENSE",
   "type": "module",
   "platform": "node",
   "types": "dist/index.d.ts",
