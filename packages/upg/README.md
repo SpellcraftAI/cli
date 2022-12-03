@@ -17,7 +17,7 @@ and a **description**.
 
 You can put anything you want in those fields, but some targets are supported
 out of the box for execution (TypeScript using `tsmodule`, Python using
-`python3`, and OS-specific shell commands `zsh`, `bash`, and `cmd`). You can
+`python`, and OS-specific shell commands `zsh`, `bash`, and `cmd`). You can
 still execute non-supported targets by telling the CLI what command to run to
 execute the output file.
 

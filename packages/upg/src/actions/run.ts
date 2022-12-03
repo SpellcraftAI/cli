@@ -13,7 +13,7 @@ import { style, log, error, success } from "@tsmodule/log";
 export const EXECUTION_COMMANDS = {
   bash: "bash",
   zsh: "zsh",
-  python: "python3",
+  python: "python",
   javascript: "node",
   typescript: "tsmodule",
   // typescript: `ts-node -O ${JSON.stringify({ lib: ["dom", "esnext"] })}`,
@@ -92,7 +92,7 @@ export const run: Action = async (state) => {
     const { command: promptCommand } = await prompts({
       type: "text",
       name: "command",
-      message: "What command should be called to execute this program as a file? (e.g. 'node', 'python3', 'bash')",
+      message: "What command should be called to execute this program as a file? (e.g. 'node', 'python', 'bash')",
     });
 
     command = promptCommand;
