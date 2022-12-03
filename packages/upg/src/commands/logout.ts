@@ -1,5 +1,5 @@
+import { success } from "@tsmodule/log";
 import { AUTH0_CLIENT } from "../globs/node";
-import { success } from "../utils/log";
 
 export const logoutCommand = async () => {
   await AUTH0_CLIENT.logout();

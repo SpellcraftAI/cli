@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
+import { style } from "@tsmodule/log";
 import { supportsLanguage } from "cli-highlight";
-import { chalk, highlight } from "../globs/shared";
+import { highlight } from "../globs/shared";
 import { State } from "../state";
 
 export const displayProgram = (
@@ -23,16 +24,32 @@ export const displayProgram = (
       codeText =
         diff
           .map((part, i) => {
-            const plusOrMinus = chalk.bold(
-              part.added ? chalk.green("  +  ") : part.removed ? chalk.red("  -  ") : "     "
+            const plusOrMinus = style(
+              part.added
+                ? style("  +  ", ["green"])
+                : part.removed
+                  ? style("  -  ", ["red"])
+                  : "     ",
+              ["bold", "dim"]
             );
 
             const withAddedSigns =
               part
                 .value
                 .split("\n")
-                .map((line) => `${plusOrMinus}${!part.removed ? highlight(line, target) : line}`)
-                .map((line) => part.removed ? chalk.dim(chalk.red(line)) : line)
+                .map(
+                  (line) => part.removed
+                    ? style(line, ["dim", "redBright"]) || ""
+                    : line
+                )
+                .map(
+                  (line) => part.added
+                    ? style(line, ["bold"]) || ""
+                    : line
+                )
+                .map(
+                  (line) => `${plusOrMinus}${!part.removed ? highlight(line, target) : line}`
+                )
                 .join("\n");
 
             const withEndingNewline =
@@ -51,7 +68,7 @@ export const displayProgram = (
     lines
       .map((line, index) => {
         const lineNumber = index + 1;
-        return `${chalk.dim(chalk.gray(lineNumber.toString().padStart(3, " ")))}   ${line}`;
+        return `${style(lineNumber.toString().padStart(3, " "), ["dim", "grey"])}   ${line}`;
       })
       .join("\n");
 
@@ -59,13 +76,14 @@ export const displayProgram = (
    * You can breathe again.
    */
 
+  console.log();
+  console.log();
   console.group();
   if (iteration) {
     console.log();
-    console.log(`   ${chalk.dim("Iteration")} ${iteration}`);
+    console.log(`   ${style("Iteration", ["dim"])} ${iteration}`);
   }
 
-  console.log();
   console.log(diff ? codeText : withLineNumbers);
   console.log();
   console.log();

@@ -3,9 +3,9 @@ import { DOMAIN_URL } from "../globs/shared";
 import prompts from "prompts";
 
 import { diffLines } from "diff";
-import { error, success } from "../utils/log";
 import { NullableAction } from "./types";
 import { AUTH0_CLIENT } from "../globs/node";
+import { error, success } from "@tsmodule/log";
 
 export const edit: NullableAction<{ instruction?: string }> =
 async (state, { instruction } = {}) => {

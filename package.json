@@ -1,6 +1,6 @@
 {
   "name": "@gptlabs/tools",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "type": "module",
   "platform": "node",
   "types": "dist/index.d.ts",
@@ -14,7 +14,10 @@
     "publish": "yarn workspaces run publish"
   },
   "devDependencies": {
-    "@tsmodule/tsmodule": "^40.16.0",
+    "@tsmodule/log": "^1.4.4",
+    "@tsmodule/spinners": "^0.5.3",
+    "@tsmodule/test": "^1.2.5",
+    "@tsmodule/tsmodule": "^41.23.0",
     "@types/auth0": "^2.35.7",
     "@types/diff": "^5.0.2",
     "@types/node": "^18.11.9",
@@ -22,22 +25,23 @@
     "@types/which": "^2.0.1",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
-    "auth0-node-client": "^2.4.6",
-    "ava": "^5.0.1",
-    "await-shell": "^34.1.1",
-    "chalk": "^5.1.2",
+    "auth0-node-client": "^3.6.0",
+    "ava": "^5.1.0",
     "cli-highlight": "^2.1.11",
     "clipboardy": "^3.0.0",
     "commander": "^9.4.1",
     "concurrently": "^7.5.0",
     "cross-env": "^7.0.3",
+    "debug-logging": "^4.1.2",
     "diff": "^5.1.0",
     "eslint": "^8.26.0",
     "node-fetch": "^3.2.10",
     "ora": "^6.1.2",
     "prompts": "^2.4.2",
+    "release-it": "^15.5.0",
     "tiny-cli-editor": "^0.1.1",
     "typescript": "^4.8.4",
+    "universal-shell": "^35.0.1",
     "which": "^3.0.0"
   }
 }

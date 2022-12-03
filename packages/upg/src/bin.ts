@@ -4,12 +4,13 @@ import { Command, program } from "commander";
 import { readFile } from "fs/promises";
 import { env } from "process";
 import { oraPromise } from "ora";
+// import { spinners } from "@tsmodule/spinners";
 
-import { chalk, SUBSCRIPTION_LOCK } from "./globs/shared";
+import { SUBSCRIPTION_LOCK, VERSION } from "./globs/shared";
 import { AUTH0_CLIENT } from "./globs/node";
 
 import { withErrorFormatting } from "./utils/errorFormatting";
-import { error, log, success } from "./utils/log";
+import { error, log, style, success } from "@tsmodule/log";
 import { checkSubscription } from "./utils/checkSubscription";
 
 import { loadCommand } from "./commands/load";
@@ -18,12 +19,7 @@ import { loginCommand } from "./commands/login";
 import { logoutCommand } from "./commands/logout";
 import { explainCommand } from "./commands/explain";
 import { updateCommand } from "./commands/update";
-import { getPackageJsonValue } from "./packageJson";
-
-const VERSION = await getPackageJsonValue("version");
-if (!VERSION) {
-  throw new Error("Failed to get version. Please report this: https://twitter.com/gptlabs");
-}
+import { authorizeCommand } from "./commands/authorize";
 
 program
   .name("upg")
@@ -46,7 +42,8 @@ program
 program
   .command("explain")
   .description("Explain a program by pasting it or loading from file.\n\n")
-  // .option("-f, --file [file]", "The file to explain.")
+  .option("-n, --non-interactive", "Run without interactivity.")
+  .argument("[file]", "The file to explain.")
   .action(withErrorFormatting(explainCommand));
 
 
@@ -61,15 +58,20 @@ program
   .action(withErrorFormatting(logoutCommand));
 
 program
+  .command("authorize")
+  .description("Create a new authorization code to log in via SSH.\n\n")
+  .action(withErrorFormatting(authorizeCommand));
+
+program
   .command("update")
-  .description("Update the CLI to the latest version.\n\n")
+  .description("Update the CLI to the latest version.")
   .action(withErrorFormatting(updateCommand));
 
 program
   .command("version")
   .description("Check the current version of UPG.")
   .action(() => {
-    log(`UPG version: ${chalk.underline(VERSION)}.`);
+    log(`UPG version: ${style(VERSION, ["underline"])}.`);
   });
 
 /**
@@ -82,7 +84,7 @@ const logo = await readFile(logoFile, "utf8");
 const taglines = await readFile(taglinesFile, "utf8").then((data) => data.split("\n"));
 
 if (env.NODE_ENV !== "test") {
-  log(chalk.dim(
+  log(
     logo
       .replace(
         "Not competent enough to render a tagline!",
@@ -91,8 +93,10 @@ if (env.NODE_ENV !== "test") {
       .replace(
         "(A version number goes here)",
         VERSION
-      )
-  ));
+      ),
+    ["dim"],
+    { postLines: 1 }
+  );
 }
 
 /**
@@ -106,7 +110,7 @@ Command.prototype.helpInformation = function () {
 /**
  * Warn if a user is trying to access non-auth commands without being logged in.
  */
-const whitelist = ["help", "--help", "login", "logout", "update"];
+const whitelist = ["help", "--help", "login", "logout", "authorize", "version", "update"];
 if (
   env.NODE_ENV !== "test" &&
   !whitelist.includes(process.argv.slice(2)[0])
@@ -114,10 +118,12 @@ if (
   const user = await AUTH0_CLIENT.getUser();
   if (!user) {
     error(
-      chalk.dim("You are logged out."),
-      "Run \"upg login\" to log in."
+      "You are logged out.",
+      ["dim", "redBright"],
+      { postLines: 0 }
     );
 
+    error("Run \"upg login\" to log in.");
     process.exit(1);
   }
 
@@ -125,13 +131,17 @@ if (
   success("Logged in.");
 
   if (SUBSCRIPTION_LOCK) {
-    await oraPromise(
-      withErrorFormatting(checkSubscription),
-      {
-        text: "Checking subscription...\n",
-        indent: 4,
-      }
-    );
+    log();
+    await oraPromise(checkSubscription, {
+      text: "Checking subscription...",
+      indent: 2,
+    });
+    log();
+    // await spinners({
+    //   "Checking subscription...": async () => {
+    //     await withErrorFormatting(checkSubscription)();
+    //   }
+    // });
   }
 }
 

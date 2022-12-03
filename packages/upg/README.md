@@ -4,7 +4,7 @@
 / /_/ / /_/ / /_/ /     
 \__,_/ .___/\__, /      🇺🇸  Built by GPT Labs
     /_/    /____/       Now officially a CIA front company!
-                        (c) 2022 MIT License
+                        (c) 2022 GPT Labs License
 ```
 
 This is an initial public release. It will be ugly. Please send feedback to
@@ -17,7 +17,7 @@ and a **description**.
 
 You can put anything you want in those fields, but some targets are supported
 out of the box for execution (TypeScript using `tsmodule`, Python using
-`python3`, and OS-specific shell commands `zsh`, `bash`, and `cmd`). You can
+`python`, and OS-specific shell commands `zsh`, `bash`, and `cmd`). You can
 still execute non-supported targets by telling the CLI what command to run to
 execute the output file.
 
@@ -191,4 +191,39 @@ The following explanation was generated:
       **Save** to get it out of the CLI and execute it manually, or load it with
       `upg load [new-file]` and then **Run**.
 
-      See the **Convert to other languages** section above.
+      See the **Convert to other languages** section above .
+
+## Developing
+
+In the monorepo top-level directory `.`:
+
+```shell
+# install workspace dependencies
+yarn
+
+# enter UPG workspace
+cd packages/upg
+```
+
+You can start development mode and build the production bundle using:
+
+```shell
+# develop
+yarn dev
+
+# build
+yarn build
+```
+
+You can run the built program by executing `./dist/bin.js`, either manually or
+by using the linked Yarn binary (linked automatically by `yarn build`):
+
+```shell
+# using yarn
+yarn upg login
+yarn upg load file.ts
+
+# or
+./dist/bin.js login
+./dist/bin.js load file.ts
+```
