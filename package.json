@@ -1,6 +1,6 @@
 {
   "name": "@gptlabs/tools",
-  "license": "MIT",
+  "license": "See license in LICENSE",
   "type": "module",
   "platform": "node",
   "types": "dist/index.d.ts",

@@ -7,7 +7,7 @@
     "GPT Labs"
   ],
   "version": "0.1.12-canary.11",
-  "license": "MIT",
+  "license": "See license in LICENSE",
   "type": "module",
   "platform": "node",
   "types": "dist/index.d.ts",

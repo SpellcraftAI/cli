@@ -4,7 +4,7 @@
 / /_/ / /_/ / /_/ /     
 \__,_/ .___/\__, /      🇺🇸  Built by GPT Labs
     /_/    /____/       Now officially a CIA front company!
-                        (c) 2022 MIT License
+                        (c) 2022 GPT Labs License
 ```
 
 This is an initial public release. It will be ugly. Please send feedback to
