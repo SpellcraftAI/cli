@@ -50,7 +50,7 @@ export const updateCommand = async () => {
     }
 
     log("Updating upg via NPM.", ["bold"]);
-    await shell.run(`npm update -g ${packageName}`);
+    await shell.run(`npm i -g ${packageName}`);
   }
 
   success("Updated successfully.");
