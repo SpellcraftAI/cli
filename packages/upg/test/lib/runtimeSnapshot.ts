@@ -1,8 +1,10 @@
+import { ExecutionContext } from "ava";
 import { createShell } from "universal-shell";
 import { PLATFORM_EXTENSIONS } from "../../src/actions/run";
 import { useTempFile } from "../../src/utils/useTempFile";
 
 export const testSourceCode = async (
+  t: ExecutionContext,
   target: string,
   description: string
 ) => {
@@ -15,13 +17,17 @@ export const testSourceCode = async (
     `./dist/bin.js -n ${JSON.stringify(target)} ${JSON.stringify(description)}`
   );
 
-  return { stdout };
+  t.snapshot(stdout.trim(), "Generated source code");
+  return stdout;
 };
 
 export const testRuntime = async (
+  t: ExecutionContext,
   target: string,
   stdout: string,
 ) => {
+  if (process.env.CI) return t.pass();
+
   /**
    * Write to a tempfile.
    */
@@ -33,5 +39,24 @@ export const testRuntime = async (
   const tempfile = await useTempFile(stdout, extension);
 
   const shell = createShell();
-  return await shell.run(`./dist/bin.js run ${JSON.stringify(tempfile)} -t ${JSON.stringify(target)}`);
+  const output = await shell.run(`./dist/bin.js run -n ${JSON.stringify(tempfile)} -t ${JSON.stringify(target)}`);
+
+  t.snapshot(
+    {
+      stdout: output.stdout.trim(),
+      code: output.code,
+    },
+    "Runtime output"
+  );
+
+  return output;
+};
+
+export const programSnapshot = async (
+  t: ExecutionContext,
+  target: string,
+  description: string
+) => {
+  const stdout = await testSourceCode(t, target, description);
+  return await testRuntime(t, target, stdout);
 };

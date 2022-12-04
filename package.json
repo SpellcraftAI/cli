@@ -17,7 +17,7 @@
     "@tsmodule/log": "^2.2.1",
     "@tsmodule/spinners": "^0.5.3",
     "@tsmodule/test": "^1.2.5",
-    "@tsmodule/tsmodule": "^41.23.0",
+    "@tsmodule/tsmodule": "^41.24.0",
     "@types/auth0": "^2.35.7",
     "@types/diff": "^5.0.2",
     "@types/node": "^18.11.9",
@@ -41,7 +41,7 @@
     "release-it": "^15.5.0",
     "tiny-cli-editor": "^0.1.1",
     "typescript": "^4.8.4",
-    "universal-shell": "^35.0.1",
+    "universal-shell": "^35.0.7",
     "which": "^3.0.0"
   }
 }

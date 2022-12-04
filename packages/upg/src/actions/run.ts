@@ -6,7 +6,7 @@ import { createShell } from "universal-shell";
 import { rm } from "fs/promises";
 
 import { Action } from "./types";
-import { style, error, success, preLog } from "@tsmodule/log";
+import { style, warn } from "@tsmodule/log";
 import { useTempFile } from "../utils/useTempFile";
 
 export const EXECUTION_COMMANDS = {
@@ -92,10 +92,12 @@ export const run: Action = async (state) => {
     throw new Error("No execution command provided.");
   }
 
-  preLog(
+  warn(
     style("-".repeat(30), ["dim"]) + "\n" +
     style("Output", ["bold", "dim"]) + "\n" +
     style("-".repeat(30), ["dim"]),
+    [],
+    { preLines: 1 },
   );
 
   const startTime = performance.now();
@@ -103,11 +105,11 @@ export const run: Action = async (state) => {
   const endTime = performance.now();
   const duration = endTime - startTime;
 
-  preLog("-".repeat(30), ["dim"]);
+  warn("-".repeat(30), ["dim"]);
 
-  const logCommand = exitCode === 0 ? success : error;
-  logCommand(
-    style(`${command} exited with code ${exitCode}.`, ["dim"]) + "\n" +
+  const failed = exitCode !== 0;
+  warn(
+    style(`${command} exited with code ${exitCode}.`, ["dim", failed ? "red" : "green"]) + "\n" +
     `Execution time: ${duration.toFixed(2)}ms`,
   );
 
