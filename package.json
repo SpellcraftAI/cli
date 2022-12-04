@@ -14,7 +14,7 @@
     "publish": "yarn workspaces run publish"
   },
   "devDependencies": {
-    "@tsmodule/log": "^1.4.4",
+    "@tsmodule/log": "^2.2.1",
     "@tsmodule/spinners": "^0.5.3",
     "@tsmodule/test": "^1.2.5",
     "@tsmodule/tsmodule": "^41.23.0",
@@ -25,7 +25,7 @@
     "@types/which": "^2.0.1",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
-    "auth0-node-client": "^3.7.0",
+    "auth0-node-client": "^3.8.0",
     "ava": "^5.1.0",
     "cli-highlight": "^2.1.11",
     "clipboardy": "^3.0.0",

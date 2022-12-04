@@ -136,7 +136,7 @@ export const nextState = async (current: State): Promise<NextState> => {
       }
 
       await clipboard.write(current.code);
-      success("Copied.");
+      success("Copied.", [], { preLines: 1 });
       break;
 
     case "save":
@@ -144,7 +144,7 @@ export const nextState = async (current: State): Promise<NextState> => {
       break;
 
     case "undo":
-      success("Reverting.");
+      success("Reverting.", [], { preLines: 1 });
       undo = true;
       break;
 

@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
+import { stdout } from "process";
 import { newProgram } from "../actions/new";
 import { loop } from "../state";
-import { displayProgram } from "../utils/displayProgram";
 
 export type NewOptions = {
   target: string;
@@ -26,11 +26,10 @@ export const newCommand = async (
     throw new Error("No code generated.");
   }
 
-  if (nonInteractive) {
-    displayProgram({ code: initialState.code, target });
-    return initialState.code;
+  if (!nonInteractive) {
+    // displayProgram({ code: initialState.code, target });
+    await loop(initialState);
+  } else {
+    stdout.write(initialState.code.trim());
   }
-
-  const finalState = await loop(initialState);
-  return finalState?.code;
 };

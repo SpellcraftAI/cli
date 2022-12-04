@@ -1,4 +1,4 @@
-import { success } from "@tsmodule/log";
+import { warn } from "@tsmodule/log";
 import prompts from "prompts";
 import { AUTH0_CLIENT } from "../globs/node";
 
@@ -31,7 +31,7 @@ export const authorizeCommand = async () => {
       });
 
       await AUTH0_CLIENT.login(code);
-      success("Logged in.");
+      warn("Logged in.", ["bold", "green"], { preLines: 1 });
       break;
 
     case "generate":

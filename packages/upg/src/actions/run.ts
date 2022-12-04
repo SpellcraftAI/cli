@@ -3,12 +3,11 @@ import prompts from "prompts";
 import { performance } from "perf_hooks";
 
 import { createShell } from "universal-shell";
-import { rm, writeFile } from "fs/promises";
-import { tmpdir } from "os";
-import { resolve } from "path";
+import { rm } from "fs/promises";
 
 import { Action } from "./types";
-import { style, log, error, success } from "@tsmodule/log";
+import { style, error, success, preLog } from "@tsmodule/log";
+import { useTempFile } from "../utils/useTempFile";
 
 export const EXECUTION_COMMANDS = {
   bash: "bash",
@@ -74,16 +73,7 @@ export const run: Action = async (state) => {
     }
   }
 
-  /**
-   * Random 16-character string filename.
-   */
-  const tempname = Math.random().toString(36).substring(0, 15);
-  const tempfile = resolve(tmpdir(), `${tempname}.${fileExtension}`);
-
-  /**
-   * Write the tempfile.
-   */
-  await writeFile(tempfile, code);
+  const tempfile = await useTempFile(code, fileExtension);
 
   let command: string;
   if (target && PLATFORMS.includes(target)) {
@@ -102,10 +92,10 @@ export const run: Action = async (state) => {
     throw new Error("No execution command provided.");
   }
 
-  log(
+  preLog(
     style("-".repeat(30), ["dim"]) + "\n" +
     style("Output", ["bold", "dim"]) + "\n" +
-    style("-".repeat(30), ["dim"])
+    style("-".repeat(30), ["dim"]),
   );
 
   const startTime = performance.now();
@@ -113,7 +103,7 @@ export const run: Action = async (state) => {
   const endTime = performance.now();
   const duration = endTime - startTime;
 
-  log("-".repeat(30), ["dim"]);
+  preLog("-".repeat(30), ["dim"]);
 
   const logCommand = exitCode === 0 ? success : error;
   logCommand(

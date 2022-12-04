@@ -47,7 +47,7 @@ async (state, { instruction } = {}) => {
   const editedCode = response.code.trim();
   const diff = diffLines(code, editedCode);
 
-  success("Edited.");
+  success("Edited.", [], { preLines: 1 });
   return {
     ...state,
     code: editedCode,

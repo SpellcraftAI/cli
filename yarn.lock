@@ -238,10 +238,10 @@
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-1.1.2.tgz#ccb91445360179a04e7fe6aff78c00ffc1eeaf82"
   integrity sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==
 
-"@tsmodule/log@^1.4.4":
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/@tsmodule/log/-/log-1.4.4.tgz#9273bbbb6eef17ef67b658227b0e8e6a00342cb0"
-  integrity sha512-Voq6UB92Z63L3QuhFOjjlmLErE7gbuNHi9i8ayDpOOfPQnkrDdp1cg29w+GpGC94mG+nvnO45req+dAqEKlyuQ==
+"@tsmodule/log@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@tsmodule/log/-/log-2.2.1.tgz#b7351743557c4d1d0f07195f5c1deb71617ecc19"
+  integrity sha512-JdnluIsDaxQkg3qvhClaXwt+E4N0Tf6OEd3oOs642JX8e8d/y1h6kExZd0hY1OBVmvhLCncB1Yi02dfdkINlbw==
 
 "@tsmodule/spinners@^0.5.3":
   version "0.5.3"
@@ -564,10 +564,10 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
 
-auth0-node-client@^3.7.0:
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/auth0-node-client/-/auth0-node-client-3.7.0.tgz#08f46ee11a6b2174f227c0192dea14dbe41fa0b7"
-  integrity sha512-uRHlvXHI5RU+M4CUU1e/qA3FyTNUtMUc6A288d8Uoq9KZmuXH+Ctu17/e5PzLGaQENoqp05hT7D0R4w0E5l/zw==
+auth0-node-client@^3.8.0:
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/auth0-node-client/-/auth0-node-client-3.8.0.tgz#37d127096855e35d384e1f91e5191cfbdbf4c133"
+  integrity sha512-70ouGzmBgj/vULP4yzFKrqShJZyYozTEWwc4TTN1wtCpRWAf35QkuLAGLza5Fw0u1b9/JqRfYwa17PUGxrqS5Q==
 
 ava@^5.1.0:
   version "5.1.0"

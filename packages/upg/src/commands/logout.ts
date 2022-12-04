@@ -3,5 +3,5 @@ import { AUTH0_CLIENT } from "../globs/node";
 
 export const logoutCommand = async () => {
   await AUTH0_CLIENT.logout();
-  success("Logged out successfully.");
+  success("Logged out successfully.", [], { preLines: 1 });
 };
