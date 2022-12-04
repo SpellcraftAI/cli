@@ -147,11 +147,12 @@ if (
   warn("Logged in.", ["bold", "green"]);
 
   if (SUBSCRIPTION_LOCK) {
-    log();
+    warn();
     await oraPromise(checkSubscription, {
       text: "Checking subscription...",
       indent: 2,
     });
+    warn();
     // log();
     // await spinners({
     //   "Checking subscription...": async () => {
