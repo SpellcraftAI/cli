@@ -17,13 +17,14 @@ export const testSourceCode = async (
     `./dist/bin.js -n ${JSON.stringify(target)} ${JSON.stringify(description)}`
   );
 
-  t.snapshot(stdout.trim(), "Generated source code");
+  t.snapshot(stdout.trim(), `${description} (${target})\nSource code`);
   return stdout;
 };
 
 export const testRuntime = async (
   t: ExecutionContext,
   target: string,
+  description: string,
   stdout: string,
 ) => {
   if (process.env.CI) return t.pass();
@@ -46,7 +47,7 @@ export const testRuntime = async (
       stdout: output.stdout.trim(),
       code: output.code,
     },
-    "Runtime output"
+    `${description} (${target})\nRuntime output`
   );
 
   return output;
@@ -58,5 +59,5 @@ export const programSnapshot = async (
   description: string
 ) => {
   const stdout = await testSourceCode(t, target, description);
-  return await testRuntime(t, target, stdout);
+  return await testRuntime(t, target, description, stdout);
 };

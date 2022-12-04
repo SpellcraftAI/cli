@@ -8,14 +8,14 @@ import { programSnapshot, testSourceCode } from "./lib/runtimeSnapshot";
 await sleep(1000);
 
 test.serial("zsh", async (t) => {
-  await programSnapshot(t, "zsh", "print the first 30 Mersenne primes");
+  await programSnapshot(t, "zsh", "find the first 5 Mersenne primes without third party libraries");
 });
 
 test.serial("python", async (t) => {
   await programSnapshot(
     t,
     "python",
-    "load the ticker history from tickers.csv, calculate the cumulative returns of tickers by price_close over time, and plot using ggplot and pandas"
+    "load the ticker history from tickers.csv, and plot the total return over time using ggplot and pandas"
   );
 });
 
@@ -35,10 +35,22 @@ test.serial("mandelbrot", async (t) => {
   );
 });
 
+/**
+ * Source code only tests:
+ */
+
 test.serial("Next.js page", async (t) => {
   await testSourceCode(
     t,
     "typescript",
     "export a Next.js page called CounterPage which renders a header saying Hello World, and a counter which is incremented by a blue button labeled Press Me"
+  );
+});
+
+test.serial("gene splicing", async (t) => {
+  await testSourceCode(
+    t,
+    "python",
+    "clusters time-series gene expression signatures using smoothing spline clustering"
   );
 });
