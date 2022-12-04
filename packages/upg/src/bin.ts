@@ -10,7 +10,7 @@ import { SUBSCRIPTION_LOCK, VERSION } from "./globs/shared";
 import { AUTH0_CLIENT } from "./globs/node";
 
 import { withErrorFormatting } from "./utils/errorFormatting";
-import { error, log, style, success } from "@tsmodule/log";
+import { error, log, style, warn } from "@tsmodule/log";
 import { checkSubscription } from "./utils/checkSubscription";
 
 import { loadCommand } from "./commands/load";
@@ -20,6 +20,12 @@ import { logoutCommand } from "./commands/logout";
 import { explainCommand } from "./commands/explain";
 import { updateCommand } from "./commands/update";
 import { authorizeCommand } from "./commands/authorize";
+import { runCommand } from "./commands/run";
+
+/**
+ * Stdin content piped into a command.
+ */
+export let PROCESS_PIPED_STDIN = "";
 
 program
   .name("upg")
@@ -38,6 +44,14 @@ program
   .description("Load a program from a file.")
   .argument("<file>", "The file to load.")
   .action(withErrorFormatting(loadCommand));
+
+program
+  .command("run")
+  .description("Run a program and start editing.")
+  .argument("[file]", "The file to run.")
+  .option("-t, --target <target>", "The target to run the script for (e.g. \"python\").")
+  .option("-n, --non-interactive", "Print output and exit without looping.")
+  .action(withErrorFormatting(runCommand));
 
 program
   .command("explain")
@@ -84,19 +98,21 @@ const logo = await readFile(logoFile, "utf8");
 const taglines = await readFile(taglinesFile, "utf8").then((data) => data.split("\n"));
 
 if (env.NODE_ENV !== "test") {
-  log(
-    logo
-      .replace(
-        "Not competent enough to render a tagline!",
-        taglines[Math.floor(Math.random() * taglines.length)]
-      )
-      .replace(
-        "(A version number goes here)",
-        VERSION
-      ),
-    ["dim"],
-    { postLines: 1 }
+  console.warn(
+    style(
+      logo
+        .replace(
+          "Not competent enough to render a tagline!",
+          taglines[Math.floor(Math.random() * taglines.length)]
+        )
+        .replace(
+          "(A version number goes here)",
+          VERSION
+        ),
+      ["dim"]
+    ),
   );
+  console.warn();
 }
 
 /**
@@ -128,15 +144,16 @@ if (
   }
 
   // console.log(user);
-  success("Logged in.");
+  warn("Logged in.", ["bold", "green"]);
 
   if (SUBSCRIPTION_LOCK) {
-    log();
+    warn();
     await oraPromise(checkSubscription, {
       text: "Checking subscription...",
       indent: 2,
     });
-    log();
+    warn();
+    // log();
     // await spinners({
     //   "Checking subscription...": async () => {
     //     await withErrorFormatting(checkSubscription)();
@@ -145,4 +162,21 @@ if (
   }
 }
 
-program.parse(process.argv);
+/**
+ * Will read piped input and pass it to the command if exists, otherwise will
+ * treat as TTY and enter regular interactive flow.
+ */
+if(process.stdin.isTTY || env.NODE_ENV === "test") {
+  program.parse(process.argv);
+} else {
+  process.stdin.on("readable", function() {
+    const chunk = process.stdin.read();
+    if (chunk !== null) {
+      PROCESS_PIPED_STDIN += chunk;
+    }
+  });
+
+  process.stdin.on("end", function() {
+    program.parse(process.argv);
+  });
+}

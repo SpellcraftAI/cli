@@ -35,6 +35,6 @@ export const save: NullableAction = async (state) => {
 
   await writeFile(file, code);
 
-  success(`Saved file to ${file}.`);
+  success(`Saved file to ${file}.`, [], { preLines: 1 });
   return null;
 };

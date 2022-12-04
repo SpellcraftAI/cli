@@ -10,7 +10,8 @@ import { error, success } from "@tsmodule/log";
 export const edit: NullableAction<{ instruction?: string }> =
 async (state, { instruction } = {}) => {
   if (!state || !state.code) {
-    throw new Error("Nothing to edit.");
+    error("Nothing to edit.");
+    return null;
   }
 
   const { code } = state;
@@ -39,13 +40,14 @@ async (state, { instruction } = {}) => {
   ).then((res) => res.json()) as any;
 
   if (typeof response.code !== "string") {
-    throw new Error("No code generated.");
+    error("No code generated.");
+    return null;
   }
 
   const editedCode = response.code.trim();
   const diff = diffLines(code, editedCode);
 
-  success("Edited.");
+  success("Edited.", [], { preLines: 1 });
   return {
     ...state,
     code: editedCode,

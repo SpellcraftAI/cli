@@ -3,7 +3,7 @@ import { State } from "./types";
 // import { error, log } from "../utils/log";
 import { displayProgram } from "../utils/displayProgram";
 import { nextState } from "./next";
-import { error, log } from "@tsmodule/log";
+import { error, log, preLog } from "@tsmodule/log";
 
 export const loop = async (
   initialState: State,
@@ -21,7 +21,7 @@ export const loop = async (
     }
 
     if (current.explanation) {
-      log("Explanation", ["bold", "dim"]);
+      preLog("Explanation", ["bold", "dim"]);
       log(current.explanation, [], { preLines: 0 });
     }
 

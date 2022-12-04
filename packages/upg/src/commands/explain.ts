@@ -4,8 +4,8 @@ import prompts from "prompts";
 import { explain } from "../actions/explain";
 import { loop } from "../state";
 import { log } from "@tsmodule/log";
-import {extname} from "path";
-import {readFile} from "fs/promises";
+import { extname } from "path";
+import { readFile } from "fs/promises";
 
 export type ExplainOptions = {
   nonInteractive?: boolean;
@@ -13,15 +13,17 @@ export type ExplainOptions = {
 
 export const explainCommand = async (
   file: string,
-  { nonInteractive = false }: ExplainOptions
+  { nonInteractive = false }: ExplainOptions = {}
 ) => {
   if (nonInteractive) {
     if (!file) {
       throw new Error("Specify `file` for --non-interactive mode.");
     }
+
     const target = extname(file).slice(1);
     const fileContents = await readFile(file, "utf8");
     const state = await explain({ code: fileContents, target });
+
     log(state.explanation);
     return;
   }
