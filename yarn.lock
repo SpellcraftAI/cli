@@ -253,10 +253,10 @@
   resolved "https://registry.yarnpkg.com/@tsmodule/test/-/test-1.2.5.tgz#d8c19725985b9312784aa5ed812c256e270eb9aa"
   integrity sha512-aCyPINI1YORnFLkKTdm/UwysbOa8EkfrrofUr4IFlBl0VOfQp1WIg7XAvU4HOWoEw9ILs/yROtpZfxuhTBKcqw==
 
-"@tsmodule/tsmodule@^41.24.0":
-  version "41.24.0"
-  resolved "https://registry.yarnpkg.com/@tsmodule/tsmodule/-/tsmodule-41.24.0.tgz#f185d7c5f65d1c127442ead860861055ff2d4773"
-  integrity sha512-r9LfDUxS1+yUt3BmQ4x86EcX937lg8yfckpTzPmciiamfzIjLb5FfJIbo1YzSR093elGI0VWv2LaML0N7dsM+Q==
+"@tsmodule/tsmodule@^41.26.0":
+  version "41.26.0"
+  resolved "https://registry.yarnpkg.com/@tsmodule/tsmodule/-/tsmodule-41.26.0.tgz#349ba6d68d6bce64248680d380d274c659e4b5f3"
+  integrity sha512-dSidkBChOGjQNyzdMi6EHbmQx04ZKCFiMS/OLxpvy18HhV3pjT0dVvWoJI20eBeAigPZ+CJL+a+8xSp1O8X5og==
   dependencies:
     esbuild "^0.15.16"
     typescript "^4.9.3"

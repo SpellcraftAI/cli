@@ -1,7 +1,6 @@
 import test from "ava";
-import { createShell } from "universal-shell";
 import { sleep } from "./lib";
-import { testRuntime, programSnapshot, testSourceCode } from "./lib/runtimeSnapshot";
+import { programSnapshot, testSourceCode } from "./lib/runtimeSnapshot";
 
 /**
  * Wait for the API to start up.

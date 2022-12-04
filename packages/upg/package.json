@@ -28,7 +28,7 @@
     "dev": "tsmodule dev",
     "build": "tsmodule build -e clipboardy --standalone \"src/{bin.ts,header.txt,taglines.txt}\"",
     "lint": "eslint --fix",
-    "pretest": "yarn build && npm link -f",
+    "pretest": "yarn build -d && npm link -f",
     "test": "cross-env NODE_ENV=test concurrently -k -s first \"yarn ava\" \"yarn dev-web\"",
     "update-tests": "cross-env NODE_ENV=test concurrently -k -s first \"yarn ava -u\" \"yarn dev-web\"",
     "release": "release-it --ci -VV",
