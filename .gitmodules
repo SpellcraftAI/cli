@@ -1,0 +1,3 @@
+[submodule "packages/gsh"]
+	path = packages/gsh
+	url = git@github.com:gptlabs/gsh.git
