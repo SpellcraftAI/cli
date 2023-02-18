@@ -6,7 +6,7 @@
     "GPT-3",
     "GPT Labs"
   ],
-  "version": "0.1.15-canary.2",
+  "version": "0.1.15-canary.3",
   "license": "SEE LICENSE IN LICENSE",
   "type": "module",
   "platform": "node",
