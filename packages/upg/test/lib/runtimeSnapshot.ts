@@ -1,5 +1,5 @@
 import { ExecutionContext } from "ava";
-import { createShell } from "universal-shell";
+import { createShell } from "../../src/utils/createShell";
 import { PLATFORM_EXTENSIONS } from "../../src/actions/run";
 import { useTempFile } from "../../src/utils/useTempFile";
 
@@ -8,7 +8,7 @@ export const testSourceCode = async (
   target: string,
   description: string
 ) => {
-  const shell = createShell();
+  const shell = await createShell({});
 
   /**
    * The generated source code for this target and description.

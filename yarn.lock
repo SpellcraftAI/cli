@@ -744,10 +744,10 @@ at-least-node@^1.0.0:
   resolved "https://registry.yarnpkg.com/at-least-node/-/at-least-node-1.0.0.tgz#602cd4b46e844ad4effc92a8011a3c46e0238dc2"
   integrity sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==
 
-auth0-node-client@^3.8.0:
-  version "3.8.0"
-  resolved "https://registry.yarnpkg.com/auth0-node-client/-/auth0-node-client-3.8.0.tgz#37d127096855e35d384e1f91e5191cfbdbf4c133"
-  integrity sha512-70ouGzmBgj/vULP4yzFKrqShJZyYozTEWwc4TTN1wtCpRWAf35QkuLAGLza5Fw0u1b9/JqRfYwa17PUGxrqS5Q==
+auth0-node-client@cjs@^3.8.0:
+  version "5.2.1-cjs.0"
+  resolved "https://registry.yarnpkg.com/auth0-node-client/-/auth0-node-client-5.2.1-cjs.0.tgz#cbeb29cca44e0731092c502e3bf85e9f70da56ec"
+  integrity sha512-9SPl/JSZPsUQQsM5OV0EahV9PDjdqAaAxwiiCdRQLMbJ1q/ZABz6DNKm7T6MJNir37X4MNsjzqvTv+hhTuaONA==
 
 ava@^5.1.0:
   version "5.1.0"
@@ -4293,10 +4293,10 @@ unique-string@^3.0.0:
   dependencies:
     crypto-random-string "^4.0.0"
 
-universal-shell@^35.0.7:
-  version "35.0.7"
-  resolved "https://registry.yarnpkg.com/universal-shell/-/universal-shell-35.0.7.tgz#a1838afc0fbafb5e0e90dae73a04022bfaf5e7ef"
-  integrity sha512-GiXv1NKBHCh/Vfclt9ZgdVFmagTcHkzI0N0tMFkEY3Onl+NHvpoWq/pn3a1jI6+3YB47VCcTZEP5V661sVOTqA==
+universal-shell@^35.3.0:
+  version "35.3.0"
+  resolved "https://registry.yarnpkg.com/universal-shell/-/universal-shell-35.3.0.tgz#5a1fb16058fb3ce549c89f98f12d23e8fdc6f46e"
+  integrity sha512-Fn7kCKat7RYqOXOtcAqGBrH5TEqClNP0u6IpcuxOJ2/1hFmimO8X/yd676WbBHqIcUp+M79+AHJyraAEJEo7MQ==
 
 universal-user-agent@^6.0.0:
   version "6.0.0"

@@ -1,5 +1,5 @@
 import which from "which";
-import { createShell } from "universal-shell";
+import { createShell } from "../utils/createShell";
 import { createDebugLogger } from "debug-logging";
 
 import { log, success } from "@tsmodule/log";

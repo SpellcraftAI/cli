@@ -2,7 +2,8 @@ import prompts from "prompts";
 
 import { performance } from "perf_hooks";
 
-import { createShell } from "universal-shell";
+import { createShell } from "../utils/createShell";
+
 import { rm } from "fs/promises";
 
 import { Action } from "./types";
