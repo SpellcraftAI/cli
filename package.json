@@ -17,7 +17,7 @@
     "@tsmodule/log": "^2.2.1",
     "@tsmodule/spinners": "^0.5.3",
     "@tsmodule/test": "^1.2.5",
-    "@tsmodule/tsmodule": "^41.26.0",
+    "@tsmodule/tsmodule": "^44.5.0",
     "@types/auth0": "^2.35.7",
     "@types/diff": "^5.0.2",
     "@types/node": "^18.11.9",
