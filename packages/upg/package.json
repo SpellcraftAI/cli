@@ -7,7 +7,7 @@
     "GPT-4",
     "Spellcraft"
   ],
-  "version": "0.1.15-canary.5",
+  "version": "0.1.15-canary.6",
   "license": "SEE LICENSE IN LICENSE",
   "type": "module",
   "platform": "node",
