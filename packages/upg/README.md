@@ -1,15 +1,3 @@
-```
-  __  ______  ____ _    UPG CLI
- / / / / __ \/ __ `/    Public Beta
-/ /_/ / /_/ / /_/ /     
-\__,_/ .___/\__, /      🇺🇸  Built by GPT Labs
-    /_/    /____/       Now officially a CIA front company!
-                        (c) 2022 GPT Labs License
-```
-
-This is an initial public release. It will be ugly. Please send feedback to
-[`@SpellcraftAI` on Twitter](https://twitter.com/SpellcraftAI).
-
 ## What is UPG?
 
 UPG is a tool for creating and editing programs given a **target** (language)
