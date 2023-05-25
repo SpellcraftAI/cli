@@ -1,15 +1,3 @@
-```
-  __  ______  ____ _    UPG CLI
- / / / / __ \/ __ `/    Public Beta
-/ /_/ / /_/ / /_/ /     
-\__,_/ .___/\__, /      🇺🇸  Built by GPT Labs
-    /_/    /____/       Now officially a CIA front company!
-                        (c) 2022 GPT Labs License
-```
-
-This is an initial public release. It will be ugly. Please send feedback to
-[`@gptlabs` on Twitter](https://twitter.com/gptlabs).
-
 ## What is UPG?
 
 UPG is a tool for creating and editing programs given a **target** (language)
@@ -26,13 +14,13 @@ execute the output file.
 Using Yarn:
 
 ```bash
-yarn global add @gptlabs/upg
+yarn global add @spellcraft/upg
 ```
 
 Using NPM:
 
 ```bash
-npm i -g @gptlabs/upg
+npm i -g @spellcraft/upg
 ```
 
 After installing, you can update with `upg update`.
@@ -65,11 +53,11 @@ for Linux, and `cmd` for Windows.
 1. Generating `ffmpeg` spaghetti to convert all `.mov` files in the current
    directory to `.mp4`:
    
-   ![](https://github.com/gptlabs/tools/raw/master/packages/upg/assets/ffmpeg.gif)
+   ![](https://github.com/SpellcraftAI/tools/raw/master/packages/upg/assets/ffmpeg.gif)
 
 2. Converting screen recordings of these demos to `.gif` for use in this README:
 
-   ![](https://github.com/gptlabs/tools/raw/master/packages/upg/assets/ffmpeg-gif.gif)
+   ![](https://github.com/SpellcraftAI/tools/raw/master/packages/upg/assets/ffmpeg-gif.gif)
 
 ## Example: Other programs
 
@@ -79,14 +67,14 @@ You can generate programs for any language.
 
 An oldie but a goodie.
 
-![](https://github.com/gptlabs/tools/raw/master/packages/upg/assets/mandelbrot.gif)
+![](https://github.com/SpellcraftAI/tools/raw/master/packages/upg/assets/mandelbrot.gif)
 
 ### Generating and demonstrating the Y combinator function
 
 Also adds a demo, and executes using [TS
 Module](https://github.com/tsmodule/tsmodule)¹.
 
-![](https://github.com/gptlabs/tools/raw/master/packages/upg/assets/ycombinator.gif)
+![](https://github.com/SpellcraftAI/tools/raw/master/packages/upg/assets/ycombinator.gif)
 
 <sub>¹ Similar to `ts-node`, but won't throw on account of type errors.
 You'll need to install `@tsmodule/tsmodule` for now to run TS.</sub>
@@ -112,7 +100,7 @@ Finally, once it converged on a working solution, it was asked to optimize
 performance using the **Edit** command: `refactor: make it faster`. (For
 some reason, that spell works very well for performance optimization.)
 
-![](https://github.com/gptlabs/tools/raw/master/packages/upg/assets/min-edit.png)
+![](https://github.com/SpellcraftAI/tools/raw/master/packages/upg/assets/min-edit.png)
 
 ### Converting to other languages
 
@@ -124,7 +112,7 @@ language context will not automatically change yet - in the meantime, use
 
 Translates the Y combinator output above.
 
-![](https://github.com/gptlabs/tools/raw/master/packages/upg/assets/yc.gif)
+![](https://github.com/SpellcraftAI/tools/raw/master/packages/upg/assets/yc.gif)
 
 
 #### Translating comments
@@ -138,7 +126,7 @@ fluently. See examples below for even harder language targets.
 Translates the comments in the generated minimum edit distance
 solution to English.
 
-![](https://github.com/gptlabs/tools/raw/master/packages/upg/assets/translate.png)
+![](https://github.com/SpellcraftAI/tools/raw/master/packages/upg/assets/translate.png)
 
 **Difficulty: HARD**
 
@@ -153,7 +141,7 @@ begin", "to initiate"), due to it looking closer to English
 [`initialize`](https://en.wiktionary.org/wiki/initialize). But it
 remains a reliable transation more or less.
 
-![](https://github.com/gptlabs/tools/raw/master/packages/upg/assets/latin.png)
+![](https://github.com/SpellcraftAI/tools/raw/master/packages/upg/assets/latin.png)
 
 **Difficulty: SUICIDE**
 
@@ -163,7 +151,7 @@ language with approximately 180,000 native speakers.
 It seems to drop the macrons (e.g. ā) due to code comments almost
 always being ASCII only. 
 
-![](https://github.com/gptlabs/tools/raw/master/packages/upg/assets/maori.png)
+![](https://github.com/SpellcraftAI/tools/raw/master/packages/upg/assets/maori.png)
 
 ## Example: Explanations
 
@@ -179,7 +167,7 @@ The following explanation was generated:
 > transform one string into another. The program uses a dynamic programming
 > approach to solving the problem.
 
-![](https://github.com/gptlabs/tools/raw/master/packages/upg/assets/explain.png)
+![](https://github.com/SpellcraftAI/tools/raw/master/packages/upg/assets/explain.png)
 
 ## Known issues
 

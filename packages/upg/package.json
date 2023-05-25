@@ -1,12 +1,13 @@
 {
-  "name": "@gptlabs/upg",
+  "name": "@spellcraft/upg",
   "description": "A terminal utility for generating, editing, and executing programs in any language.",
   "keywords": [
     "UPG",
     "GPT-3",
-    "GPT Labs"
+    "GPT-4",
+    "Spellcraft"
   ],
-  "version": "0.1.14",
+  "version": "0.1.15-canary.7",
   "license": "SEE LICENSE IN LICENSE",
   "type": "module",
   "platform": "node",
@@ -50,6 +51,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gptlabs/tools.git"
+    "url": "https://github.com/SpellcraftAI/tools.git"
   }
 }

@@ -13,7 +13,7 @@ export const SUBSCRIPTION_LOCK = true;
  */
 export const PACKAGE_JSON = await getPackageJson();
 if (!PACKAGE_JSON) {
-  throw new Error("Failed to get package.json. Please report this: https://twitter.com/gptlabs");
+  throw new Error("Failed to get package.json. Please report this: https://twitter.com/SpellcraftAI");
 }
 
 /**
