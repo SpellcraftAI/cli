@@ -7,7 +7,7 @@ import { CANARY } from "../globs/shared";
 
 export const updateCommand = async () => {
   const DEBUG = createDebugLogger(updateCommand);
-  const packageName = CANARY ? "@gptlabs/upg@canary" : "@gptlabs/upg";
+  const packageName = CANARY ? "@spellcraft/upg@canary" : "@spellcraft/upg";
 
   if (CANARY) {
     log("Installing canary version.");
