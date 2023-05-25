@@ -1,6 +1,6 @@
 <div align="center">
-  <h1>GPT Labs</h1>
-  <b><p>Tools</p></b>
+  <h1>Spellcraft</h1>
+  <b><p>CLI Tools</p></b>
 </div>
 
 This is a monorepo which contains all of our open source tools.
