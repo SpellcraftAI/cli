@@ -14,7 +14,7 @@ programs in any language generated with the help of GPT-3.
 
 ### 2. GSH
 
-[`packages/gsh`](https://github.com/gptlabs/tools/tree/master/packages/upg)
+[`packages/gsh`](https://github.com/SpellcraftAI/gsh)
 
 A natural language terminal shell for using your machine conversationally.
 
